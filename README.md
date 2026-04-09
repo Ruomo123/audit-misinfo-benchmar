@@ -99,11 +99,12 @@ python filter_aaers.py
 
 ### `check_pdfs.py` — PDF Validator
 
-Checks all downloaded PDFs for corruption or unreadable content (e.g. scanned image-only PDFs with no extractable text). Saves a list of problematic files to `aaer_data/bad_pdfs.json`.
+Checks all downloaded PDFs for corruption or unreadable content (e.g. scanned image-only PDFs with no extractable text). Saves a list of problematic files to `aaer_data/bad_pdfs.json`. Optionally deletes bad PDFs and their JSON sidecars.
 
 ```bash
 conda activate audit
-python check_pdfs.py
+python check_pdfs.py           # check only, report bad files
+python check_pdfs.py --delete  # check and delete bad PDFs + sidecars
 ```
 
 ---
