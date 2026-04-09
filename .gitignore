@@ -1,0 +1,22 @@
+# Claude project memory (local only)
+CLAUDE.md
+
+# Downloaded data (large PDFs and metadata)
+aaer_data/
+aaer_filtered/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+
+# Temp/test files
+peek_pdf.py
+test_download.py
+test_filter.py
+proposal_unpacked/
+proposal_text.txt
