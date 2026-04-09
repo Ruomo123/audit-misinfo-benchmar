@@ -97,6 +97,43 @@ python filter_aaers.py
 
 ---
 
+### `download_litrel.py` — SEC Litigation Releases Downloader
+
+Downloads complaint and judgment PDFs from the "See Also" section of each SEC Litigation Release:
+`https://www.sec.gov/enforcement-litigation/litigation-releases`
+
+**What it does:**
+1. Scrapes the index (~119 pages, ~2,380 releases total, newest-first)
+2. For each release, downloads all linked PDFs from the "See Also" block — typically an SEC Complaint and/or Final Judgment
+3. Some releases have multiple PDFs (e.g. one per defendant)
+4. Saves a JSON sidecar (`LR-XXXXX.json`) per release with metadata
+
+> Note: Litigation releases cover all SEC civil court actions, not just accounting/auditing cases. Use `filter_aaers.py` after downloading to identify audit-relevant cases.
+
+**Options:** identical to `download_aaers.py` (`--from-year`, `--from-month`, `--max-cases`, `--out-dir`, `--refresh-index`)
+
+**Examples:**
+```bash
+conda activate audit
+
+python download_litrel.py --from-year 2025
+python download_litrel.py --from-year 2024 --from-month 6
+python download_litrel.py --max-cases 50
+```
+
+**Output:**
+```
+litrel_data/
+  litrel_index.json                              # full scraped index
+  download_log.json                              # per-release download status
+  LR-26525-sec-complaint-comp26525.pdf           # complaint PDF
+  LR-26524-final-judgment-wall-judg26524.pdf     # judgment PDF
+  LR-XXXXX.json                                  # metadata sidecar
+  ...
+```
+
+---
+
 ### `check_pdfs.py` — PDF Validator
 
 Checks all downloaded PDFs for corruption or unreadable content (e.g. scanned image-only PDFs with no extractable text). Saves a list of problematic files to `aaer_data/bad_pdfs.json`. Optionally deletes bad PDFs and their JSON sidecars.
@@ -138,10 +175,14 @@ python test_download.py
 # 2. Download AAERs (adjust flags as needed)
 python download_aaers.py --from-year 2025
 
-# 3. Check for bad PDFs
-python check_pdfs.py
+# 3. Download Litigation Releases (adjust flags as needed)
+python download_litrel.py --from-year 2025
 
-# 4. Run classifier
+# 4. Check for bad PDFs (AAERs)
+python check_pdfs.py           # check only
+python check_pdfs.py --delete  # remove bad PDFs
+
+# 5. Run classifier on AAERs
 python filter_aaers.py
 ```
 

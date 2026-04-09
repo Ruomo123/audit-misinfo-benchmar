@@ -4,6 +4,7 @@ CLAUDE.md
 # Downloaded data (large PDFs and metadata)
 aaer_data/
 aaer_filtered/
+litrel_data/
 
 # Logs
 *.log
