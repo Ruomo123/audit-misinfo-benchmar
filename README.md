@@ -97,6 +97,74 @@ python filter_aaers.py
 
 ---
 
+### `filter_aaers_v2.py` — v2 Filtering Pipeline (LLM-based)
+
+Rewrite of the v1 keyword classifier. Five changes:
+
+1. **Structure-aware parsing** — detects Roman-numeral sections (I./II./III./...) and locates the SUMMARY / FINDINGS / FACTS subblock so classification runs on the narrative core, not header/citation noise.
+2. **Document-type gate** — reinstatements, dismissals, withdrawals, appellate reviews, and lifted suspensions are classified as `NON_ENFORCEMENT` and excluded from fraud categories.
+3. **Legal-signal extraction** — Rule 102(e), Section 10A, PCAOB AS, ASC 606/605/350/360/842/450, SAB 99/101/104, Section 13(a), Item 303, Rule 10b-5, Section 17(a) captured as structured boolean fields.
+4. **LLM classification** — Gemini 2.5 Flash classifies the SUMMARY block and returns JSON: `primary_category`, `secondary_categories`, `respondent_type` (issuer / auditor / individual / mixed), `filing_entity`, `fiscal_periods_affected`, `dollar_impact`, `specific_mechanism`, `traceable_to_financials`, `reasoning`, `confidence`.
+5. **HTML-content detection** — some AAER "PDFs" were served as HTML by SEC; those are flagged and skipped.
+
+**Setup:**
+```bash
+pip install pdfplumber pypdf google-generativeai
+export GEMINI_API_KEY=...
+```
+
+**Run:**
+```bash
+python filter_aaers_v2.py                # full run, 6 parallel LLM workers
+python filter_aaers_v2.py --limit 50     # smoke test (optional)
+```
+
+**Output:**
+```
+aaer_filtered_v2/
+  aaer_dataset_v2.json      # full structured records with LLM fields + legal signals
+  aaer_dataset_v2.csv       # flat CSV
+  aaer_by_category_v2.json  # grouped by primary_category
+  comparison_vs_v1.json     # per-AAER diff vs v1 labels
+  extraction_failures_v2.txt
+```
+
+---
+
+### `select_top_cases.py` — Downstream Case Selector
+
+Filters `aaer_dataset_v2.json` down to the highest-quality cases for model-testing input. Applied as two stages:
+
+**Hard filter** (reject if any fails):
+- `status == "ok"` (PDF extracted cleanly)
+- `is_new_enforcement` (not a reinstatement/dismissal)
+- `primary_category ∈ {REVENUE_TIMING, EXPENSE_DEFERRAL, ACCOUNTING_ESTIMATE, EARNINGS_SMOOTHING}` (add `NARRATIVE_DISTORTION` with `--include-narrative`)
+- `respondent_type ∈ {issuer, mixed}` (case maps to a named issuer with filings)
+- `traceable_to_financials == True`
+- Non-empty `filing_entity`
+- Non-empty `specific_mechanism` (≥30 chars)
+- At least one entry in `fiscal_periods_affected`
+- `llm_confidence ≥ --conf` (default 0.8)
+
+**Ranking key** (desc): `(llm_confidence, has_dollar_impact, n_periods, mechanism_length)`.
+
+**Run:**
+```bash
+python select_top_cases.py                          # top 20, conf≥0.8
+python select_top_cases.py --top-n 50 --conf 0.7    # looser
+python select_top_cases.py --include-narrative      # add NARRATIVE_DISTORTION
+```
+
+**Output:**
+```
+aaer_filtered_v2/
+  selected_cases.json   # slim records with EDGAR-ready fields
+  selected_cases.csv
+```
+Also prints per-reason rejection counts and a ranked summary to stdout.
+
+---
+
 ### `download_litrel.py` — SEC Litigation Releases Downloader
 
 Downloads complaint and judgment PDFs from the "See Also" section of each SEC Litigation Release:
@@ -182,9 +250,36 @@ python download_litrel.py --from-year 2025
 python check_pdfs.py           # check only
 python check_pdfs.py --delete  # remove bad PDFs
 
-# 5. Run classifier on AAERs
+# 5. Run v1 classifier (keyword-based, fast)
 python filter_aaers.py
+
+# 6. Run v2 classifier (LLM-based, requires GEMINI_API_KEY)
+python filter_aaers_v2.py
+
+# 7. Select top-N cases for downstream model input
+python select_top_cases.py --top-n 50
 ```
+
+---
+
+## Data & Outputs in This Repo
+
+Committed:
+
+| Path | Size | What |
+|---|---|---|
+| `aaer_filtered_v2/` | 476K | v2 filter outputs + selected top cases (JSON + CSV) |
+| `output/litrel_2026.zip` | 59M | Litigation Releases 2026 sample archive |
+
+Not committed (too large for GitHub — regenerate locally):
+
+| Path | How to regenerate |
+|---|---|
+| `aaer_data/` | `python download_aaers.py` |
+| `litrel_data/` | `python download_litrel.py` |
+| `aaer_filtered/` | `python filter_aaers.py` |
+| `output/litrel_part1-5.zip` | split `litrel_data/` into ~1GB chunks after download |
+| `aaer_data.zip`, `litrel_data.zip`, `aaer_filtered.zip` | archive snapshots — create on demand |
 
 ---
 
