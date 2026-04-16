@@ -1,0 +1,779 @@
+{
+  "NARRATIVE_DISTORTION": [
+    {
+      "aaer_num": 2220,
+      "respondent": "Mark M. Iwan, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2231,
+      "respondent": "Global Crossing Ltd., Thomas J. Casey, Dan J. Cohrs, and Joseph P. Perrone",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2506,
+      "respondent": "Douglas W. Marcille, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3143,
+      "respondent": "Harry O. Nicodemus IV, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "understated officer compensation by more than $293,380",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3535,
+      "respondent": "Apple REIT Six, Inc.; Apple REIT Seven, Inc.; Apple REIT Eight, Inc.; Apple REIT Nine, Inc.; Apple Six Advisors, Inc.; Apple Seven Advisors, Inc.; Apple Eight Advisors, Inc.; Apple Nine Advisors, Inc.; Glade M. Knight; and Bryan F. Peery, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3677,
+      "respondent": "Vineet Kalucha, CA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3889,
+      "respondent": "Lisa Pavelka McAlister, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4146,
+      "respondent": "Argo Group International Holdings, Ltd.",
+      "document_type": "unknown",
+      "dollar_impact": "understated perquisites and personal benefits by over $5.3 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4519,
+      "respondent": "FirstEnergy Corp.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    }
+  ],
+  "EARNINGS_SMOOTHING": [
+    {
+      "aaer_num": 2252,
+      "respondent": "Huntington Bancshares, Inc., Thomas E. Hoaglin, Michael J. Mcmennamin, and John Van Fleet, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated 2001 operating earnings by $8.5 million ($.04 per share) and 2002 operating earnings by $17.1 million ($.08 per share)",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 2286,
+      "respondent": "Robert Korkuc, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2855,
+      "respondent": "James B. Kinney, CMA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "tens of millions to hundreds of millions of dollars in excess reserves",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3694,
+      "respondent": "Wilfred Robert Sutcliffe",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    }
+  ],
+  "ACCOUNTING_ESTIMATE": [
+    {
+      "aaer_num": 2271,
+      "respondent": "Rita J. McConville",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated accounts receivable by approximately $5 million (related to one customer)",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2729,
+      "respondent": "Robert C. Dean",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 2838,
+      "respondent": "Citigroup Inc.",
+      "document_type": "unknown",
+      "dollar_impact": "overstated income by at least $479 million pre-tax",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2913,
+      "respondent": "Stewart Enterprises, Inc., Kenneth C. Budde, CPA, and Michael G. Hymel, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated net revenue from 2001 through 2005 by more than $72 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3061,
+      "respondent": "Tab Keplinger, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1
+    },
+    {
+      "aaer_num": 3090,
+      "respondent": "Anna M. Baird, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3489,
+      "respondent": "Brendan N. Connors, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3713,
+      "respondent": "Home Loan Servicing Solutions, Ltd.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3733,
+      "respondent": "Ocwen Financial Corp.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1
+    },
+    {
+      "aaer_num": 3789,
+      "respondent": "The Phoenix Companies, Inc.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1
+    },
+    {
+      "aaer_num": 3804,
+      "respondent": "Park National Corporation",
+      "document_type": "unknown",
+      "dollar_impact": "increased provision for loan losses and ALLL by more than $22 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3883,
+      "respondent": "Enviso Capital, LLC, Ryan Bowers and Jeffrey Laberge, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 4355,
+      "respondent": "Mattel, Inc.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "understated by $109 million",
+      "confidence": 0.9
+    }
+  ],
+  "REVENUE_TIMING": [
+    {
+      "aaer_num": 2311,
+      "respondent": "Vincent Steckler",
+      "document_type": "enforcement_order",
+      "dollar_impact": "revenue had been originally overstated by more than $3.7 million or approximately 6 percent, and that its net income had been overstated by more than $2 million, or approximately 146 percent",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 2383,
+      "respondent": "Geoffrey Jie Wei, CPA (China)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated revenue by $4.3 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2416,
+      "respondent": "Dale G. Rasmussen, Esq.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2460,
+      "respondent": "L. Michael Hart",
+      "document_type": "unknown",
+      "dollar_impact": "overstated revenue by at least 16% for fiscal year 2001, 17% for the first quarter of 2002, and 33% for the second quarter of 2002; understated pre-tax loss for 2001 by at least 20%; falsely reported profits for the first two quarters of 2002",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2566,
+      "respondent": "Robert A. Ness, Jr.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2639,
+      "respondent": "Paul Anthony Davis",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated revenue by approximately $570,000",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2783,
+      "respondent": "Robert A. Fish, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated revenue by approximately $26 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2885,
+      "respondent": "Bally Technologies, Inc.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated net sales revenue by $8.4 million in FY2003-Q4, $8.8 million in FY2004-Q1, and $10.2 million in FY2004-Q2",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2988,
+      "respondent": "Richard Miller (CPA)",
+      "document_type": "unknown",
+      "dollar_impact": "overstated operating revenue by $1.2 billion and reduced net earnings by a cumulative total of $65.9 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3241,
+      "respondent": "Rodney B. Johnson",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3317,
+      "respondent": "Leland G. Orr",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3367,
+      "respondent": "Robert Chiu, (A/K/A Chi Hung Chiu)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3830,
+      "respondent": "Mark David Shapiro, CPA",
+      "document_type": "non_enforcement",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3847,
+      "respondent": "Orthofix International N.V.; Jeffrey Hammel, CPA; Brian McCollum; Kenneth Mack and Bryan McMillan",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3858,
+      "respondent": "Ixia and Victor Alston",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3995,
+      "respondent": "KCAP Financial, Inc.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated dividends/income by approximately $22.3 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4023,
+      "respondent": "David Pruitt, CPA (Order Denying Motion to Amend the Order Instituting Proceedings)",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 4095,
+      "respondent": "FCA US LLC and Fiat Chrysler Automobiles N.V.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4161,
+      "respondent": "Super Micro Computer, Inc.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4188,
+      "respondent": "Allen Garner",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4247,
+      "respondent": "Pareteum Corporation",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated revenue by approximately $12 million for fiscal year 2018 and by approximately $30 million for the first and second quarters of 2019",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4305,
+      "respondent": "Daniel Ives",
+      "document_type": "unknown",
+      "dollar_impact": "overstated revenue by approximately $190 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4555,
+      "respondent": "DMK Pharmaceuticals Corporation (f/k/a Adamis Pharmaceuticals Corporation) and Robert O. Hopkins",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    }
+  ],
+  "OTHER_FRAUD": [
+    {
+      "aaer_num": 2326,
+      "respondent": "William E. Caswell, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "understated co-borrowing debt by $1.6 billion",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2406,
+      "respondent": "Clete D. Madden, CPA, and David L. Huffman, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2539,
+      "respondent": "Charles R. Eisenstein",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2698,
+      "respondent": "Michael C. Lingerman, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2786,
+      "respondent": "Raquel Kohler, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2959,
+      "respondent": "Dan Wise, CPA, a/k/a Danny Wise, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3038,
+      "respondent": "L. Daniel Ferrer, Esq.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "approximately $9.2 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3081,
+      "respondent": "William J. Carpenter, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3116,
+      "respondent": "Gerard A.M. Oprins, CPA, and Wendy McNeeley, CPA Robert G. Mahony, Administrative Law Judge",
+      "document_type": "unknown",
+      "dollar_impact": "misappropriated $1.92 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3227,
+      "respondent": "Michael R. Drogin, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3255,
+      "respondent": "Ball Corporation",
+      "document_type": "enforcement_order",
+      "dollar_impact": "at least $106,749",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3290,
+      "respondent": "Edwin Reese Davis, Jr. CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3345,
+      "respondent": "Juan Carlos Guillén Zerpa",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3428,
+      "respondent": "Deloitte & Touche (South Africa)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3442,
+      "respondent": "Brian D. Fox",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3453,
+      "respondent": "James C. Fields, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3506,
+      "respondent": "John Lazorchak (CPA)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3603,
+      "respondent": "BKD, LLP",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3610,
+      "respondent": "Lerner & Sipkin CPAs LLP",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3654,
+      "respondent": "Simon Lesser, CPA, CA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "misstated by $3,452,353",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3668,
+      "respondent": "Deloitte & Touche LLP, ALPS Fund Services, Inc. and Andrew C. Boynton",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3750,
+      "respondent": "Keybanc Capital Markets Inc.",
+      "document_type": "enforcement_order",
+      "dollar_impact": "overstated assets by $13,679,000 and omitted liabilities by $4,305,000",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3771,
+      "respondent": "Hall, David S., P.C. d/b/a the Hall Group CPAs Hall, David S., CPA Cochran, Michelle L. Helterbran, CPA Cisneros, Susan A.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 3809,
+      "respondent": "D'Arelli Pruzansky, et al.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3913,
+      "respondent": "Rahuldev Gandhi, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3929,
+      "respondent": "KPMG",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3939,
+      "respondent": "Winter, Kloman, Moter &  Repp, S.C., et al.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3957,
+      "respondent": "Lauren Zarsky, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "avoided losses of $19,440",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3973,
+      "respondent": "Bruton, Karen, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4007,
+      "respondent": "Crowe Horwath LLP, Joseph C. Macina, CPA and Kevin V. Wydra, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4048,
+      "respondent": "Rand, Michael T.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4057,
+      "respondent": "Thomas Chang, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4087,
+      "respondent": "TechnipFMC plc.",
+      "document_type": "unknown",
+      "dollar_impact": "over $794,000",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4113,
+      "respondent": "Holder, Cynthia, CPA Wada, Jeffrey, CPA Middendorf, David, CPA Whittle, Thomas, CPA Britt, David, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4197,
+      "respondent": "Laksha Bohra",
+      "document_type": "enforcement_order",
+      "dollar_impact": "approximately $1.4 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4260,
+      "respondent": "Reyes, Noe Corrales",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4320,
+      "respondent": "Frank Okunak, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "misappropriated approximately $16 million",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4338,
+      "respondent": "Viener, Ira S., CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4376,
+      "respondent": "Jia Roger Qian WangJia Roger Qian Wang, et al. (Order)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.7
+    },
+    {
+      "aaer_num": 4437,
+      "respondent": "Grupo Aval Acciones y Valores S.A. and Corporación Financiera Colombiana S.A.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4451,
+      "respondent": "Peter Armbruster, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4461,
+      "respondent": "Michael D. Messina, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4549,
+      "respondent": "Davidson & Company LLP, et al.",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    }
+  ],
+  "EXPENSE_DEFERRAL": [
+    {
+      "aaer_num": 2376,
+      "respondent": "Kevin Hall, CPA, and Rosemary Meyer, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 0.9
+    },
+    {
+      "aaer_num": 2880,
+      "respondent": "Nancy R. Heinen",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    }
+  ],
+  "NON_ENFORCEMENT": [
+    {
+      "aaer_num": 2627,
+      "respondent": "Kevin Hall, CPA and Rosemary Meyer, CPA",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 2713,
+      "respondent": "Michael Deutchman, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3318,
+      "respondent": "Ran H. Furman (Corrected) Cameron Elliot, Administrative Law Judge",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3388,
+      "respondent": "Kenneth M. Avery, CPA",
+      "document_type": "non_enforcement",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 3557,
+      "respondent": "Richard R. Hylland, CPA",
+      "document_type": "non_enforcement",
+      "dollar_impact": "",
+      "confidence": 1
+    },
+    {
+      "aaer_num": 3574,
+      "respondent": "BDO China Dahua CPA Co., Ltd., Ernst & Young Hua Ming LLP, KPMG Huazhen (Special General Partnership), Deloitte Touche Tohmatsu Certified Public Accountants Ltd., and PricewaterhouseCoopers Zhong Tian CPAs Limited (Order Granting Leave to the ZLCA to File an Amicus Brief)",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4139,
+      "respondent": "PLS, CPA, et al. (Order)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4222,
+      "respondent": "PLS, CPA, et al. (Order)",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4237,
+      "respondent": "Stockman Kast Ryan & Co. LLP; Ellen S. Fisher, CPA; and David H. Kast, CPA (Order)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4372,
+      "respondent": "Gregory A. Wahl, CPA, Michael Deutchman, CPA and Georgia Chung, CPA (Order Extending Time to Issue Decision)",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4395,
+      "respondent": "Jason Jianxun Tang, CPA (POSTPONEMENT ORDER)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4409,
+      "respondent": "Ramón Lafarga Bátiz (ORDER GRANTING IN PART MOTION FOR LEAVE TO USE ALTERNATE MEANS OF \nSERVICE)",
+      "document_type": "unknown",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4482,
+      "respondent": "Craig A. Golding, CPA",
+      "document_type": "non_enforcement",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4499,
+      "respondent": "Edward F. Hackert, CPA (Order Postponing Proceeding)",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    },
+    {
+      "aaer_num": 4586,
+      "respondent": "Joseph Jennings, CPA",
+      "document_type": "enforcement_order",
+      "dollar_impact": "",
+      "confidence": 1.0
+    }
+  ]
+}

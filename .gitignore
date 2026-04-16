@@ -6,6 +6,21 @@ aaer_data/
 aaer_filtered/
 litrel_data/
 
+# Large data archives at repo root (regenerate via download scripts)
+/aaer_data.zip
+/aaer_filtered.zip
+/litrel_data.zip
+
+# Large litrel parts — exceed GitHub 100MB single-file limit
+output/litrel_part*.zip
+output/aaer_filtered/
+
+# Intermediate index lists
+litrel_part*.lst
+
+# macOS
+.DS_Store
+
 # Logs
 *.log
 

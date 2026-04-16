@@ -150,8 +150,18 @@ def extract_text_pypdf(pdf_path: Path) -> str:
 def extract_text(pdf_path: Path) -> tuple[str, str]:
     """
     Returns (text, backend_used).
-    Tries pdfplumber first, then pypdf.
+    Tries pdfplumber first, then pypdf, then plain text (SEC serves old AAERs as .txt).
     """
+    with open(pdf_path, "rb") as f:
+        header = f.read(4)
+    if header != b"%PDF":
+        try:
+            text = pdf_path.read_text(encoding="utf-8", errors="replace")
+            if text.strip():
+                return text, "plaintext"
+        except Exception as e:
+            log.debug(f"plaintext read failed on {pdf_path.name}: {e}")
+
     if PDF_BACKEND == "pdfplumber" or pdfplumber:
         try:
             text = extract_text_pdfplumber(pdf_path)
