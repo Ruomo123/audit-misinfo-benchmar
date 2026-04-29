@@ -1,0 +1,428 @@
+[
+  {
+    "aaer_num": 3995,
+    "aaer_respondent": "KCAP Financial, Inc.",
+    "filing_entity": "KCAP",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "KCAP improperly recorded approximately $22.3 million of funds received from its Asset Manager Affiliates as taxable dividends when they were actually a return of capital, thereby misstating distributable income and issuing inaccurate tax Forms 1099.",
+    "fiscal_periods_affected": [
+      "FY2010",
+      "FY2011",
+      "FY2012",
+      "FY2013",
+      "FY2014-Q1",
+      "FY2014-Q2",
+      "FY2014-Q3"
+    ],
+    "period_free_text": "From at least 2010 through the third quarter of 2014",
+    "dollar_impact": "overstated dividends/income by approximately $22.3 million",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-3995.pdf",
+    "release_no": "34-84718, IC-33314, AAER-3995",
+    "sec_date": "Dec. 4, 2018",
+    "reasoning": "KCAP improperly recorded distributions received from affiliates as taxable dividends when a significant portion was actually a return of capital, thereby misstating distributable income, which is a form of improper income recognition.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2885,
+    "aaer_respondent": "Bally Technologies, Inc.",
+    "filing_entity": "Bally",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "Bally improperly recognized revenue on a bill and hold basis for individual sales and games stored in a warehouse awaiting regulatory approval, resulting in an overstatement of net sales revenue by $8.4 million in FY2003-Q4, $8.8 million in FY2004-Q1, and $10.2 million in FY2004-Q2.",
+    "fiscal_periods_affected": [
+      "FY2003",
+      "FY2004-Q1",
+      "FY2004-Q2",
+      "FY2005-Q2",
+      "FY2005-Q3"
+    ],
+    "period_free_text": "fiscal year ended June 30, 2003, the first two quarters of fiscal 2004, and the second and third quarters of fiscal 2005",
+    "dollar_impact": "overstated net sales revenue by $8.4 million in FY2003-Q4, $8.8 million in FY2004-Q1, and $10.2 million in FY2004-Q2",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-2885.pdf",
+    "release_no": "34-58636, AAER-2885",
+    "sec_date": "Sept. 24, 2008",
+    "reasoning": "The core of the fraud involves Bally's improper recognition of revenue on a bill and hold basis, which is a classic revenue timing manipulation.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2913,
+    "aaer_respondent": "Stewart Enterprises, Inc., Kenneth C. Budde, CPA, and Michael G. Hymel, CPA",
+    "filing_entity": "Stewart",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [],
+    "specific_mechanism": "Stewart overvalued revenue from pre-need cemetery merchandise by more than $72 million from 2001 through 2005 due to errors in the assumptions underlying its estimation methodology for recognizing revenue.",
+    "fiscal_periods_affected": [
+      "FY2001",
+      "FY2002",
+      "FY2003",
+      "FY2004",
+      "FY2005"
+    ],
+    "period_free_text": "2001 through 2005",
+    "dollar_impact": "overstated net revenue from 2001 through 2005 by more than $72 million",
+    "respondent_type": "mixed",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-2913.pdf",
+    "release_no": "34-59172, AAER-2913",
+    "sec_date": "Dec. 29, 2008",
+    "reasoning": "The primary issue was Stewart's flawed methodology and assumptions for estimating revenue from pre-need cemetery merchandise, leading to a material overstatement of net revenue.",
+    "legal_signals": [
+      "sab_101",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3804,
+    "aaer_respondent": "Park National Corporation",
+    "filing_entity": "Park National Corporation",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [],
+    "specific_mechanism": "PRK understated its Allowance for Loan Losses by improperly incorporating anticipated cash flows from guarantors in active litigation and using unsubstantiated collateral valuations, leading to a restatement that increased the provision for loan losses by more than $22 million.",
+    "fiscal_periods_affected": [
+      "FY2010",
+      "FY2011-Q1",
+      "FY2011-Q2",
+      "FY2011-Q3"
+    ],
+    "period_free_text": "2010 and the first three quarters of 2011",
+    "dollar_impact": "increased provision for loan losses and ALLL by more than $22 million",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-3804.pdf",
+    "release_no": "34-78896, AAER-3804",
+    "sec_date": "Sept. 21, 2016",
+    "reasoning": "The case explicitly describes the improper accounting for the Allowance for Loan Losses (ALLL) through manipulated impairment analyses and collateral valuations, which falls under the ACCOUNTING_ESTIMATE category.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4247,
+    "aaer_respondent": "Pareteum Corporation",
+    "filing_entity": "Pareteum",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [],
+    "specific_mechanism": "Pareteum materially overstated revenue by approximately $12 million for fiscal year 2018 and $30 million for the first and second quarters of 2019 by recognizing revenue based on non-binding purchase orders and prior to product shipment.",
+    "fiscal_periods_affected": [
+      "FY2018",
+      "FY2019-Q1",
+      "FY2019-Q2"
+    ],
+    "period_free_text": "2018 through mid-2019",
+    "dollar_impact": "overstated revenue by approximately $12 million for fiscal year 2018 and by approximately $30 million for the first and second quarters of 2019",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-4247.pdf",
+    "release_no": "33-10975, 34-92866, AAER-4247",
+    "sec_date": "Sept. 2, 2021",
+    "reasoning": "The core of the fraud involved Pareteum improperly recognizing revenue based on non-binding purchase orders and prior to product shipment, which directly falls under premature revenue recognition.",
+    "legal_signals": [
+      "asc_606",
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2838,
+    "aaer_respondent": "Citigroup Inc.",
+    "filing_entity": "Citigroup Inc.",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [],
+    "specific_mechanism": "Citigroup improperly accounted for the impact of the Argentine economic crisis on its operations, including a bond swap, non-swapped bonds, the sale of a subsidiary, and loan conversions, leading to an overstatement of income by at least $479 million pre-tax in the fourth quarter of 2001.",
+    "fiscal_periods_affected": [
+      "FY2001-Q4",
+      "FY2001"
+    ],
+    "period_free_text": "fourth quarter of 2001",
+    "dollar_impact": "overstated income by at least $479 million pre-tax",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-2838.pdf",
+    "release_no": "34-57970, AAER-2838",
+    "sec_date": "June 16, 2008",
+    "reasoning": "The case involves Citigroup's improper accounting for the impact of the Argentine economic crisis, specifically regarding the valuation and recognition of various financial instruments and assets, which are inherently based on accounting estimates.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4161,
+    "aaer_respondent": "Super Micro Computer, Inc.",
+    "filing_entity": "Super Micro Computer, Inc.",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [
+      "EXPENSE_DEFERRAL"
+    ],
+    "specific_mechanism": "Super Micro prematurely recognized revenue by various methods including recognizing revenue before delivery, changing shipment terms, recognizing revenue without customer acceptance, and recognizing extended warranty revenue at the time of sale, while also understating expenses by misusing cooperative marketing funds and failing to write down inventory.",
+    "fiscal_periods_affected": [
+      "FY2015-Q1",
+      "FY2015-Q2",
+      "FY2015-Q3",
+      "FY2015-Q4",
+      "FY2015",
+      "FY2016-Q1",
+      "FY2016-Q2",
+      "FY2016-Q3",
+      "FY2016-Q4",
+      "FY2016",
+      "FY2017-Q1",
+      "FY2017-Q2",
+      "FY2017-Q3",
+      "FY2017"
+    ],
+    "period_free_text": "FY2015 through FY2017",
+    "dollar_impact": "",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-4161.pdf",
+    "release_no": "33-10822, 34-89656, AAER-4161",
+    "sec_date": "Aug. 25, 2020",
+    "reasoning": "The primary fraud mechanism involved numerous methods of prematurely recognizing revenue before goods were delivered or accepted by customers.",
+    "legal_signals": [
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4095,
+    "aaer_respondent": "FCA US LLC and Fiat Chrysler Automobiles N.V.",
+    "filing_entity": "FCA US and FCA N.V.",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [
+      "EARNINGS_SMOOTHING",
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "FCA US inflated monthly vehicle sales by paying dealers to report fake sales that were later unwound, by having employees report fake sales, and by using a 'cookie jar' database of actual but unreported sales to manipulate reported figures.",
+    "fiscal_periods_affected": [
+      "FY2012-Q3",
+      "FY2012-Q4",
+      "FY2013",
+      "FY2014",
+      "FY2015",
+      "FY2016-Q1",
+      "FY2016-Q2",
+      "FY2016-Q3"
+    ],
+    "period_free_text": "August 2012 to July 2016",
+    "dollar_impact": "",
+    "respondent_type": "issuer",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-4095.pdf",
+    "release_no": "33-10706, 34-87134, AAER-4095",
+    "sec_date": "Sept. 27, 2019",
+    "reasoning": "The primary mechanism involved reporting fake sales and manipulating the timing of actual sales to inflate reported monthly vehicle sales, which directly falls under improper revenue recognition.",
+    "legal_signals": [
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3789,
+    "aaer_respondent": "The Phoenix Companies, Inc.",
+    "filing_entity": "The Phoenix Companies, Inc.",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [],
+    "specific_mechanism": "Phoenix restated its financial statements due to dozens of errors, including improper accounting determinations, miscalculations, and incorrect assumptions related to complex insurance products (Universal Life, Loss Recognition, Fixed Indexed Annuities) and derivative valuations.",
+    "fiscal_periods_affected": [
+      "FY2009",
+      "FY2010",
+      "FY2011",
+      "FY2011-Q1",
+      "FY2011-Q2",
+      "FY2011-Q3",
+      "FY2011-Q4"
+    ],
+    "period_free_text": "FY2009 through FY2011 and Q1 2011 onwards",
+    "dollar_impact": "",
+    "respondent_type": "issuer",
+    "llm_confidence": 1,
+    "pdf_name": "AAER-3789.pdf",
+    "release_no": "34-78341, AAER-3789",
+    "sec_date": "July 15, 2016",
+    "reasoning": "The errors primarily involved miscalculations, incorrect assumptions, and improper application of accounting guidance to complex insurance products and derivatives, which are heavily reliant on estimates and valuations.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4555,
+    "aaer_respondent": "DMK Pharmaceuticals Corporation (f/k/a Adamis Pharmaceuticals Corporation) and Robert O. Hopkins",
+    "filing_entity": "DMK Pharmaceuticals Corporation f/k/a Adamis Pharmaceuticals Corporation",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [
+      "OTHER_FRAUD",
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "Adamis improperly recognized a material percentage of revenue from illegal prescriptions written by a veterinarian compensated under a sham consulting agreement, and falsely recorded these payments as legitimate consulting expenses in its periodic reports from 2016 through 2021.",
+    "fiscal_periods_affected": [
+      "FY2016",
+      "FY2017",
+      "FY2018",
+      "FY2019",
+      "FY2020",
+      "FY2021"
+    ],
+    "period_free_text": "2016 through 2021",
+    "dollar_impact": "",
+    "respondent_type": "mixed",
+    "llm_confidence": 1.0,
+    "pdf_name": "AAER-4555.pdf",
+    "release_no": "33-11353, 34-102195, AAER-4555",
+    "sec_date": "Jan. 14, 2025",
+    "reasoning": "The primary fraud involved the improper recognition of revenue generated through illegal prescriptions and the misclassification of related payments, directly impacting revenue recognition.",
+    "legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3733,
+    "aaer_respondent": "Ocwen Financial Corp.",
+    "filing_entity": "Ocwen",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "Ocwen materially misstated its net income for three quarters in 2013 and the first quarter of 2014 by relying on an improper valuation methodology for a financing liability related to mortgage servicing rights, which did not conform to GAAP.",
+    "fiscal_periods_affected": [
+      "FY2013-Q2",
+      "FY2013-Q3",
+      "FY2013-Q4",
+      "FY2014-Q1"
+    ],
+    "period_free_text": "FY2013-Q2 through FY2014-Q1",
+    "dollar_impact": "",
+    "respondent_type": "mixed",
+    "llm_confidence": 1,
+    "pdf_name": "AAER-3733.pdf",
+    "release_no": "34-76938, AAER-3733",
+    "sec_date": "Jan. 20, 2016",
+    "reasoning": "The primary issue involved Ocwen's erroneous valuation of a financing liability using a methodology that did not conform to GAAP, leading to material misstatements of financial results.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4355,
+    "aaer_respondent": "Mattel, Inc.",
+    "filing_entity": "Mattel",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [
+      "OTHER_FRAUD"
+    ],
+    "specific_mechanism": "Mattel materially misstated its Q3 2017 tax-related valuation allowance by $109 million (understated) and its Q4 2017 tax expense by $109 million (overstated) because its Thomas the Tank Engine asset was erroneously treated as a definite-lived asset for valuation allowance calculation purposes, when it was classified as indefinite-lived.",
+    "fiscal_periods_affected": [
+      "FY2017-Q3",
+      "FY2017-Q4"
+    ],
+    "period_free_text": "Q3 and Q4 2017",
+    "dollar_impact": "understated by $109 million",
+    "respondent_type": "mixed",
+    "llm_confidence": 0.9,
+    "pdf_name": "AAER-4355.pdf",
+    "release_no": "33-11122, 34-96126, AAER-4355",
+    "sec_date": "Oct. 21, 2022",
+    "reasoning": "The primary issue was a material misstatement in a tax-related valuation allowance due to the erroneous classification of an asset's life, which directly relates to the manipulation of an accounting estimate.",
+    "legal_signals": [
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2252,
+    "aaer_respondent": "Huntington Bancshares, Inc., Thomas E. Hoaglin, Michael J. Mcmennamin, and John Van Fleet, CPA",
+    "filing_entity": "HUNTINGTON BANCSHARES, INC.",
+    "primary_category": "EARNINGS_SMOOTHING",
+    "secondary_categories": [],
+    "specific_mechanism": "Huntington overstated its 2001 operating earnings by $8.5 million and 2002 operating earnings by $17.1 million using unspecified improper accounting to meet analyst and internal EPS targets.",
+    "fiscal_periods_affected": [
+      "FY2001",
+      "FY2002"
+    ],
+    "period_free_text": "fiscal years 2001 and 2002",
+    "dollar_impact": "overstated 2001 operating earnings by $8.5 million ($.04 per share) and 2002 operating earnings by $17.1 million ($.08 per share)",
+    "respondent_type": "mixed",
+    "llm_confidence": 0.9,
+    "pdf_name": "AAER-2252.pdf",
+    "release_no": "33-8579, 34-51781, AAER-2252, AAER-2251",
+    "sec_date": "June 2, 2005",
+    "reasoning": "The company used unspecified improper accounting to inflate earnings and meet Wall Street analyst earnings per share (EPS) expectations and internal EPS targets, which is a primary motivation for earnings smoothing.",
+    "legal_signals": [
+      "rule_102e",
+      "sab_99",
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3883,
+    "aaer_respondent": "Enviso Capital, LLC, Ryan Bowers and Jeffrey Laberge, CPA",
+    "filing_entity": "Enviso Capital",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "Enviso Capital materially overstated the value of two private funds in financial statements by failing to use reasonable assumptions for projected revenues of a primary asset (Bluefin Renewable Energy, LLC) and by not properly valuing a loan where full collection was improbable.",
+    "fiscal_periods_affected": [
+      "FY2012",
+      "FY2013",
+      "FY2014"
+    ],
+    "period_free_text": "2012 through 2014",
+    "dollar_impact": "",
+    "respondent_type": "mixed",
+    "llm_confidence": 0.9,
+    "pdf_name": "AAER-3883.pdf",
+    "release_no": "34-81173, IA-4731, IC-32737, AAER-3883",
+    "sec_date": "July 19, 2017",
+    "reasoning": "The primary fraud mechanism involves the material overstatement of fund values due to unreasonable assumptions in valuing a private company asset and failing to properly value a loan, which are direct manipulations of accounting estimates.",
+    "legal_signals": [
+      "rule_102e",
+      "section_4C"
+    ]
+  },
+  {
+    "aaer_num": 3713,
+    "aaer_respondent": "Home Loan Servicing Solutions, Ltd.",
+    "filing_entity": "HLSS",
+    "primary_category": "ACCOUNTING_ESTIMATE",
+    "secondary_categories": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "specific_mechanism": "HLSS misstated its net income by adopting an accounting methodology that did not conform to GAAP for the valuation of its Rights to MSRs, assigning them a value equivalent to their carrying value rather than their best estimate of fair value.",
+    "fiscal_periods_affected": [
+      "FY2012",
+      "FY2013",
+      "FY2014-Q1"
+    ],
+    "period_free_text": "2012 to 2014",
+    "dollar_impact": "",
+    "respondent_type": "issuer",
+    "llm_confidence": 0.9,
+    "pdf_name": "AAER-3713.pdf",
+    "release_no": "34-76074, AAER-3713",
+    "sec_date": "Oct. 5, 2015",
+    "reasoning": "The company misstated its net income by adopting a non-GAAP valuation methodology for its primary asset, Rights to MSRs, which directly relates to the manipulation of an accounting estimate.",
+    "legal_signals": [
+      "section_13a"
+    ]
+  }
+]

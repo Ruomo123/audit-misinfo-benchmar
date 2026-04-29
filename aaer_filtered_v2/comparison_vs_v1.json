@@ -1,0 +1,2925 @@
+[
+  {
+    "aaer_num": 994,
+    "respondent": "KPMG Peat Marwick L.L.P.; Robert G. Mahony, Administrative Law Judge",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1201,
+    "respondent": "Robert G. Weeks, David A. Hesterman, and Kenneth L. Weeks James T. Kelly, Administrative Law Judge",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1228,
+    "respondent": "Robert G. Weeks, David A. Hesterman, and Kenneth L. Weeks James T. Kelly, Administrative Law Judge",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1243,
+    "respondent": "Beth A. Morris and Steven H. Grant",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1260,
+    "respondent": "Paul Y. Okuda, Stephen A. Thorpe, and David J. Chester",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1274,
+    "respondent": "Steven Speaks, C.P.A.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1290,
+    "respondent": "Steven Wolis",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1305,
+    "respondent": "Robert G. Herndon",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1334,
+    "respondent": "Victor Douenias",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1338,
+    "respondent": "Pat A. Rossetti and Jeffrey M. Yonkers",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1354,
+    "respondent": "Franklin W. Brooks and John L. Gardner",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1374,
+    "respondent": "KPMG Peat Marwick L.L.P.; Robert G. Mahony, Administrative Law Judge",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1395,
+    "respondent": "Albert J. Dunlap, Russell A. Kersh, Robert J. Gluck, Donald R. Uzzi, Lee B. Griffith, and Phillip E. Harlow",
+    "v1_categories": "REVENUE_TIMING|EARNINGS_SMOOTHING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1414,
+    "respondent": "Richard P. Smyth, Arnold E. Johns, Jr., Michael J. Becker and Alan T. Davis",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1440,
+    "respondent": "M & A West, Inc.; Scott L. Kelly; Salvatore Censoprano; Zahra R. Gilak; Frank Thomas Eck, III; and Stanley R. Medley",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1441,
+    "respondent": "Walter T. Reeder",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1463,
+    "respondent": "Chiquita Brands International, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1488,
+    "respondent": "James E. Slayton",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1499,
+    "respondent": "Trump Hotels & Casino Resorts, Inc.",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1523,
+    "respondent": "David Held, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1534,
+    "respondent": "Signal Technology Corporation",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1543,
+    "respondent": "Teltran International Group, Ltd.",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1564,
+    "respondent": "Advanced Technical Products, Inc., James S. Carter, and Garrett L. Dominy",
+    "v1_categories": "REVENUE_TIMING|EXPENSE_DEFERRAL",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1589,
+    "respondent": "Gregory D. Norton",
+    "v1_categories": "EXPENSE_DEFERRAL|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1605,
+    "respondent": "John R. Boyd, and Christopher Curbello",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1621,
+    "respondent": "James Murphy, C.P.A.",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1634,
+    "respondent": "Barry M. Budilov and Raymond J. Green",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1653,
+    "respondent": "Paul Skulsky, et al.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1674,
+    "respondent": "800America.com, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1683,
+    "respondent": "Betty L. Vinson and Troy M. Normand",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1699,
+    "respondent": "Anika Therapeutics, Inc., J. Melville Engle and Sean F. Moran",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1729,
+    "respondent": "Lernout & Hauspie Speech Products, N.V.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1737,
+    "respondent": "Spiegel, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1764,
+    "respondent": "Michael Marchese",
+    "v1_categories": "EXPENSE_DEFERRAL",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1782,
+    "respondent": "Zimmerman Sign Companyand Jeffrey P. Johnson, CPA",
+    "v1_categories": "EXPENSE_DEFERRAL",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1796,
+    "respondent": "Paul A. Allaire, G. Richard Thoman, Barry D. Romeril, Philip D. Fishbach, Daniel S. Marchibroda and Gregory B. Tayler",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1806,
+    "respondent": "Robert C. Cloyd",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1838,
+    "respondent": "Robert W. Armstrong, III Carol Fox Foelak, Administrative Law Judge",
+    "v1_categories": "EARNINGS_SMOOTHING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1844,
+    "respondent": "Rica Foods et. al.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1875,
+    "respondent": "Analytical Surveys, Inc.",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1881,
+    "respondent": "Scott Miller",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1907,
+    "respondent": "David W. Delainey",
+    "v1_categories": "EARNINGS_SMOOTHING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1926,
+    "respondent": "Kevin Lasky et al.",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1939,
+    "respondent": "Dorothy L. Mahler, John W. Bracewell, III, and Patricia L. Jones",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1953,
+    "respondent": "Lee R. Fontaine, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1970,
+    "respondent": "Richard P. Smyth, Arnold E. Johns, Jr., Michael J. Becker and Alan T. Davis",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 1994,
+    "respondent": "Carnegie International Corporation, et al.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2013,
+    "respondent": "James Murphy, Robert Lockwood, Gilboa Peretz",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2023,
+    "respondent": "Frank M. Bergonzi, Martin L. Grass, and Franklin C. Brown",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2044,
+    "respondent": "Arthur A. Goodwin, William J. Burke and Christopher P. Whalen",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2057,
+    "respondent": "Mary Beth Stevens and Paul W. Oliver, Jr.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2083,
+    "respondent": "Kenneth K. Livesay, et al.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2096,
+    "respondent": "Michael B. Johnson, Michael Johnson & Co., Llc, David C. Skinner, Jr. And American Television And Film Company F/K/A Winners Internet Network, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2122,
+    "respondent": "Soulfood Concepts, Inc. and Markova Campbell",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2136,
+    "respondent": "Conrad M. Black, et al.",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2146,
+    "respondent": "Evan S. Collins",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2171,
+    "respondent": "Monte S. Colbert",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2189,
+    "respondent": "Craig Scott",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2200,
+    "respondent": "Craig N. Cohen",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2220,
+    "respondent": "Mark M. Iwan, CPA",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [
+      "REVENUE_TIMING"
+    ],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2231,
+    "respondent": "Global Crossing Ltd., Thomas J. Casey, Dan J. Cohrs, and Joseph P. Perrone",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a",
+      "item_303"
+    ]
+  },
+  {
+    "aaer_num": 2252,
+    "respondent": "Huntington Bancshares, Inc., Thomas E. Hoaglin, Michael J. Mcmennamin, and John Van Fleet, CPA",
+    "v1_categories": "REVENUE_TIMING|EXPENSE_DEFERRAL",
+    "v1_auditor": "True",
+    "v2_primary": "EARNINGS_SMOOTHING",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e",
+      "sab_99",
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2271,
+    "respondent": "Rita J. McConville",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a",
+      "rule_10b5"
+    ]
+  },
+  {
+    "aaer_num": 2286,
+    "respondent": "Robert Korkuc, CPA",
+    "v1_categories": "EARNINGS_SMOOTHING",
+    "v1_auditor": "True",
+    "v2_primary": "EARNINGS_SMOOTHING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2311,
+    "respondent": "Vincent Steckler",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "section_13a",
+      "rule_10b5"
+    ]
+  },
+  {
+    "aaer_num": 2326,
+    "respondent": "William E. Caswell, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2339,
+    "respondent": "Scott Gershon, Paul Cifaldi, Neil Silver and Robert Davis",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2355,
+    "respondent": "Church Extension of the Church of God, Inc., United Management Services, Inc., James Perry Grubbs and Shearon Louis Jackson",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2376,
+    "respondent": "Kevin Hall, CPA, and Rosemary Meyer, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "EXPENSE_DEFERRAL",
+    "v2_secondary": [
+      "ACCOUNTING_ESTIMATE"
+    ],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2383,
+    "respondent": "Geoffrey Jie Wei, CPA (China)",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2406,
+    "respondent": "Clete D. Madden, CPA, and David L. Huffman, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2416,
+    "respondent": "Dale G. Rasmussen, Esq.",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2442,
+    "respondent": "Sanjay Kumar and Stephen Richards",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2460,
+    "respondent": "L. Michael Hart",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "False",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "EXPENSE_DEFERRAL"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2473,
+    "respondent": "Paul W. Mikus and John V. Cracchiolo",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2484,
+    "respondent": "James N. Stanard, Martin J. Merritt And Michael W. Cash",
+    "v1_categories": "EARNINGS_SMOOTHING|NARRATIVE_DISTORTION",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2506,
+    "respondent": "Douglas W. Marcille, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2526,
+    "respondent": "Paul E. Yarick",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2539,
+    "respondent": "Charles R. Eisenstein",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2566,
+    "respondent": "Robert A. Ness, Jr.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2581,
+    "respondent": "Collins & Aikman Corporation, David A. Stockman, J. Michael Stepp, Gerald E. Jones, David R. Cosgrove, John G. Galante, Elkin B. McCallum, Paul C. Barnaba, Christopher M. Williams and Thomas V. Gougherty",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2600,
+    "respondent": "Cosmo Corigliano, Anne M. Pember, Casper Sabatino, and Kevin T. Kearney, Defendants, and Agnes T. Corigliano, Carleton H. Pember IV, and Mary Louise Scully, Relief Defendants",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2606,
+    "respondent": "Gary V. Morris",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2627,
+    "respondent": "Kevin Hall, CPA and Rosemary Meyer, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "unclear",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2639,
+    "respondent": "Paul Anthony Davis",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2659,
+    "respondent": "Dean A. Nichols",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2676,
+    "respondent": "Frank A. Dunn, Douglas C. Beatty, Michael J. Gollogly, MaryAnne E. Pahapill (a.k.a. Mary Anne Poland), Douglas A. Hamilton, Craig A. Johnson, James B. Kinney and Kenneth R.W. Taylor",
+    "v1_categories": "ACCOUNTING_ESTIMATE|EARNINGS_SMOOTHING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2698,
+    "respondent": "Michael C. Lingerman, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2713,
+    "respondent": "Michael Deutchman, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2729,
+    "respondent": "Robert C. Dean",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [
+      "EARNINGS_SMOOTHING"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2742,
+    "respondent": "Cedric Kushner Promotions, Inc., et al.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2755,
+    "respondent": "Thomas J. Saiz, and Calderon, Jaham & Osborn, An Accountancy Corporation",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2783,
+    "respondent": "Robert A. Fish, CPA",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "ACCOUNTING_ESTIMATE"
+    ],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2786,
+    "respondent": "Raquel Kohler, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2802,
+    "respondent": "Romulus S. Pereira, Robert B. Stanton, L. John Kern, Andrew D. Feldman, William F. McFarland, Lori H. Cornmesser",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2820,
+    "respondent": "Hong Liang Lu and Michael J. Sophie",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2838,
+    "respondent": "Citigroup Inc.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2855,
+    "respondent": "James B. Kinney, CMA",
+    "v1_categories": "EARNINGS_SMOOTHING",
+    "v1_auditor": "True",
+    "v2_primary": "EARNINGS_SMOOTHING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2880,
+    "respondent": "Nancy R. Heinen",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "EXPENSE_DEFERRAL",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 2885,
+    "respondent": "Bally Technologies, Inc.",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2913,
+    "respondent": "Stewart Enterprises, Inc., Kenneth C. Budde, CPA, and Michael G. Hymel, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "sab_101",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 2930,
+    "respondent": "Mark T. Turkcan",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2948,
+    "respondent": "PowerCold Corporation, Francis L. Simola, Joseph C. Cahill, and Grayling R. Hofer",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2959,
+    "respondent": "Dan Wise, CPA, a/k/a Danny Wise, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 2967,
+    "respondent": "Michael Strauss, Stephen Hozie and Robert Bernstein",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 2988,
+    "respondent": "Richard Miller (CPA)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "EARNINGS_SMOOTHING"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3010,
+    "respondent": "L. Dennis Kozlowski, Mark H. Swartz, and Mark A. Belnick",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3029,
+    "respondent": "General Electric Company",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3038,
+    "respondent": "L. Daniel Ferrer, Esq.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "rule_10b5"
+    ]
+  },
+  {
+    "aaer_num": 3061,
+    "respondent": "Tab Keplinger, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3081,
+    "respondent": "William J. Carpenter, CPA",
+    "v1_categories": "REVENUE_TIMING|EXPENSE_DEFERRAL|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "sab_101",
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3090,
+    "respondent": "Anna M. Baird, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3116,
+    "respondent": "Gerard A.M. Oprins, CPA, and Wendy McNeeley, CPA Robert G. Mahony, Administrative Law Judge",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C"
+    ]
+  },
+  {
+    "aaer_num": 3118,
+    "respondent": "Joseph Grendys et al.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3143,
+    "respondent": "Harry O. Nicodemus IV, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3168,
+    "respondent": "James W. McIntosh, et al., and Mark T. Schwetschenau",
+    "v1_categories": "EXPENSE_DEFERRAL",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3174,
+    "respondent": "Escala Group, Inc., Gregory Manning, and Larry Lee Crawford, CPA",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3201,
+    "respondent": "GlobalSantaFe Corp.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3205,
+    "respondent": "Panalpina, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3227,
+    "respondent": "Michael R. Drogin, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3241,
+    "respondent": "Rodney B. Johnson",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3255,
+    "respondent": "Ball Corporation",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3279,
+    "respondent": "Michael Baker Corporation, John Scullin and Dennis Higgins",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3290,
+    "respondent": "Edwin Reese Davis, Jr. CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3317,
+    "respondent": "Leland G. Orr",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "ACCOUNTING_ESTIMATE"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3318,
+    "respondent": "Ran H. Furman (Corrected) Cameron Elliot, Administrative Law Judge",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3345,
+    "respondent": "Juan Carlos Guillén Zerpa",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3367,
+    "respondent": "Robert Chiu, (A/K/A Chi Hung Chiu)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3368,
+    "respondent": "Koss Corporation and Michael J. Koss",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3388,
+    "respondent": "Kenneth M. Avery, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [
+      "EXPENSE_DEFERRAL"
+    ],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "non_enforcement",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3413,
+    "respondent": "Freedom Environmental Services, Inc., et al.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3428,
+    "respondent": "Deloitte & Touche (South Africa)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "audit_firm",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3442,
+    "respondent": "Brian D. Fox",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3453,
+    "respondent": "James C. Fields, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3478,
+    "respondent": "True North Finance Corp., et al.",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3489,
+    "respondent": "Brendan N. Connors, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3506,
+    "respondent": "John Lazorchak (CPA)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3535,
+    "respondent": "Apple REIT Six, Inc.; Apple REIT Seven, Inc.; Apple REIT Eight, Inc.; Apple REIT Nine, Inc.; Apple Six Advisors, Inc.; Apple Seven Advisors, Inc.; Apple Eight Advisors, Inc.; Apple Nine Advisors, Inc.; Glade M. Knight; and Bryan F. Peery, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [
+      "ACCOUNTING_ESTIMATE"
+    ],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "section_13a",
+      "item_303",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3539,
+    "respondent": "Christopher Sells and Timothy Murawski",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3557,
+    "respondent": "Richard R. Hylland, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "non_enforcement",
+    "v2_confidence": 1,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3574,
+    "respondent": "BDO China Dahua CPA Co., Ltd., Ernst & Young Hua Ming LLP, KPMG Huazhen (Special General Partnership), Deloitte Touche Tohmatsu Certified Public Accountants Ltd., and PricewaterhouseCoopers Zhong Tian CPAs Limited (Order Granting Leave to the ZLCA to File an Amicus Brief)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "unclear",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3603,
+    "respondent": "BKD, LLP",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "audit_firm",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3610,
+    "respondent": "Lerner & Sipkin CPAs LLP",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "audit_firm",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3629,
+    "respondent": "Joseph A. Kostelecky",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3654,
+    "respondent": "Simon Lesser, CPA, CA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C"
+    ]
+  },
+  {
+    "aaer_num": 3668,
+    "respondent": "Deloitte & Touche LLP, ALPS Fund Services, Inc. and Andrew C. Boynton",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3677,
+    "respondent": "Vineet Kalucha, CA",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [
+      "OTHER_FRAUD"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3694,
+    "respondent": "Wilfred Robert Sutcliffe",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "EARNINGS_SMOOTHING",
+    "v2_secondary": [
+      "ACCOUNTING_ESTIMATE"
+    ],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3713,
+    "respondent": "Home Loan Servicing Solutions, Ltd.",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3733,
+    "respondent": "Ocwen Financial Corp.",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3750,
+    "respondent": "Keybanc Capital Markets Inc.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 3771,
+    "respondent": "Hall, David S., P.C. d/b/a the Hall Group CPAs Hall, David S., CPA Cochran, Michelle L. Helterbran, CPA Cisneros, Susan A.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_10A",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3789,
+    "respondent": "The Phoenix Companies, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3804,
+    "respondent": "Park National Corporation",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3809,
+    "respondent": "D'Arelli Pruzansky, et al.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_10A",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3830,
+    "respondent": "Mark David Shapiro, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "non_enforcement",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3847,
+    "respondent": "Orthofix International N.V.; Jeffrey Hammel, CPA; Brian McCollum; Kenneth Mack and Bryan McMillan",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "asc_605",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3858,
+    "respondent": "Ixia and Victor Alston",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3883,
+    "respondent": "Enviso Capital, LLC, Ryan Bowers and Jeffrey Laberge, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C"
+    ]
+  },
+  {
+    "aaer_num": 3889,
+    "respondent": "Lisa Pavelka McAlister, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_13a",
+      "rule_10b5"
+    ]
+  },
+  {
+    "aaer_num": 3913,
+    "respondent": "Rahuldev Gandhi, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3929,
+    "respondent": "KPMG",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "audit_firm",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 3939,
+    "respondent": "Winter, Kloman, Moter &  Repp, S.C., et al.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "pcaob_as"
+    ]
+  },
+  {
+    "aaer_num": 3957,
+    "respondent": "Lauren Zarsky, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 3973,
+    "respondent": "Bruton, Karen, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 3995,
+    "respondent": "KCAP Financial, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4007,
+    "respondent": "Crowe Horwath LLP, Joseph C. Macina, CPA and Kevin V. Wydra, CPA",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_10A",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4023,
+    "respondent": "David Pruitt, CPA (Order Denying Motion to Amend the Order Instituting Proceedings)",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4048,
+    "respondent": "Rand, Michael T.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 4057,
+    "respondent": "Thomas Chang, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C"
+    ]
+  },
+  {
+    "aaer_num": 4087,
+    "respondent": "TechnipFMC plc.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4095,
+    "respondent": "FCA US LLC and Fiat Chrysler Automobiles N.V.",
+    "v1_categories": "EARNINGS_SMOOTHING",
+    "v1_auditor": "False",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "EARNINGS_SMOOTHING",
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4113,
+    "respondent": "Holder, Cynthia, CPA Wada, Jeffrey, CPA Middendorf, David, CPA Whittle, Thomas, CPA Britt, David, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 4139,
+    "respondent": "PLS, CPA, et al. (Order)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "unclear",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4146,
+    "respondent": "Argo Group International Holdings, Ltd.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [
+      "OTHER_FRAUD"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4161,
+    "respondent": "Super Micro Computer, Inc.",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "EXPENSE_DEFERRAL"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4188,
+    "respondent": "Allen Garner",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4197,
+    "respondent": "Laksha Bohra",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "rule_10b5"
+    ]
+  },
+  {
+    "aaer_num": 4222,
+    "respondent": "PLS, CPA, et al. (Order)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "audit_firm",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4237,
+    "respondent": "Stockman Kast Ryan & Co. LLP; Ellen S. Fisher, CPA; and David H. Kast, CPA (Order)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "unclear",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C"
+    ]
+  },
+  {
+    "aaer_num": 4247,
+    "respondent": "Pareteum Corporation",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "asc_606",
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4260,
+    "respondent": "Reyes, Noe Corrales",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4277,
+    "respondent": "Sequential Brands Group, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": null,
+    "v2_secondary": null,
+    "v2_respondent_type": null,
+    "v2_is_new_enforcement": null,
+    "v2_document_type": null,
+    "v2_confidence": null,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4305,
+    "respondent": "Daniel Ives",
+    "v1_categories": "REVENUE_TIMING",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4320,
+    "respondent": "Frank Okunak, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 4338,
+    "respondent": "Viener, Ira S., CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "au_c"
+    ]
+  },
+  {
+    "aaer_num": 4355,
+    "respondent": "Mattel, Inc.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "ACCOUNTING_ESTIMATE",
+    "v2_secondary": [
+      "OTHER_FRAUD"
+    ],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.9,
+    "v2_legal_signals": [
+      "section_13a",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4372,
+    "respondent": "Gregory A. Wahl, CPA, Michael Deutchman, CPA and Georgia Chung, CPA (Order Extending Time to Issue Decision)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4376,
+    "respondent": "Jia Roger Qian WangJia Roger Qian Wang, et al. (Order)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 0.7,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 4395,
+    "respondent": "Jason Jianxun Tang, CPA (POSTPONEMENT ORDER)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4409,
+    "respondent": "Ramón Lafarga Bátiz (ORDER GRANTING IN PART MOTION FOR LEAVE TO USE ALTERNATE MEANS OF \nSERVICE)",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "individual_executive",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4437,
+    "respondent": "Grupo Aval Acciones y Valores S.A. and Corporación Financiera Colombiana S.A.",
+    "v1_categories": "",
+    "v1_auditor": "False",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4451,
+    "respondent": "Peter Armbruster, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  },
+  {
+    "aaer_num": 4461,
+    "respondent": "Michael D. Messina, CPA",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "pcaob_as"
+    ]
+  },
+  {
+    "aaer_num": 4482,
+    "respondent": "Craig A. Golding, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "non_enforcement",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4499,
+    "respondent": "Edward F. Hackert, CPA (Order Postponing Proceeding)",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": []
+  },
+  {
+    "aaer_num": 4519,
+    "respondent": "FirstEnergy Corp.",
+    "v1_categories": "NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "NARRATIVE_DISTORTION",
+    "v2_secondary": [
+      "OTHER_FRAUD"
+    ],
+    "v2_respondent_type": "issuer",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4549,
+    "respondent": "Davidson & Company LLP, et al.",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "OTHER_FRAUD",
+    "v2_secondary": [],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "unknown",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "section_10A",
+      "section_13a"
+    ]
+  },
+  {
+    "aaer_num": 4555,
+    "respondent": "DMK Pharmaceuticals Corporation (f/k/a Adamis Pharmaceuticals Corporation) and Robert O. Hopkins",
+    "v1_categories": "REVENUE_TIMING|NARRATIVE_DISTORTION",
+    "v1_auditor": "True",
+    "v2_primary": "REVENUE_TIMING",
+    "v2_secondary": [
+      "OTHER_FRAUD",
+      "NARRATIVE_DISTORTION"
+    ],
+    "v2_respondent_type": "mixed",
+    "v2_is_new_enforcement": true,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e",
+      "section_4C",
+      "section_13a",
+      "rule_10b5",
+      "section_17a"
+    ]
+  },
+  {
+    "aaer_num": 4586,
+    "respondent": "Joseph Jennings, CPA",
+    "v1_categories": "",
+    "v1_auditor": "True",
+    "v2_primary": "NON_ENFORCEMENT",
+    "v2_secondary": [],
+    "v2_respondent_type": "CPA_individual",
+    "v2_is_new_enforcement": false,
+    "v2_document_type": "enforcement_order",
+    "v2_confidence": 1.0,
+    "v2_legal_signals": [
+      "rule_102e"
+    ]
+  }
+]
