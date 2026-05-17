@@ -51,6 +51,18 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
+CIK_OVERRIDES_FILE = Path("cik_overrides.json")
+
+
+def _load_cik_overrides() -> dict:
+    if not CIK_OVERRIDES_FILE.exists():
+        return {}
+    data = json.loads(CIK_OVERRIDES_FILE.read_text(encoding="utf-8"))
+    return {str(k): v.get("cik") for k, v in data.items() if isinstance(v, dict) and v.get("cik")}
+
+
+CIK_OVERRIDES = _load_cik_overrides()
+
 SESSION = requests.Session()
 SESSION.headers.update({
     "User-Agent":      USER_AGENT,
@@ -261,10 +273,15 @@ def get_submissions(cik: str) -> "dict | None":
 
 def parse_fiscal_period(period_str: str) -> "tuple[str, int] | None":
     """
-    Parse a period string like 'FY2018' or 'Q1 2019'.
-    Returns (fp, fy) matching EDGAR conventions: ('FY',2018) or ('Q1',2019).
+    Parse a period string like 'FY2018', 'FY2014-Q2', or 'Q1 2019'.
+    Returns (fp, fy) matching EDGAR conventions: ('FY',2018) or ('Q2',2014).
+    FY2014-Q2 means Q2 of fiscal year 2014 — maps to 10-Q, not 10-K.
     """
-    m = re.match(r"FY(\d{4})", period_str)
+    # Must check FY-Qn before plain FY to avoid matching FY2014 out of FY2014-Q2
+    m = re.match(r"FY(\d{4})-Q([1-4])$", period_str)
+    if m:
+        return (f"Q{m.group(2)}", int(m.group(1)))
+    m = re.match(r"FY(\d{4})$", period_str)
     if m:
         return ("FY", int(m.group(1)))
     m = re.match(r"Q([1-4])\s*(\d{4})", period_str)
@@ -423,12 +440,17 @@ def process_case(case: dict, dry_run: bool) -> dict:
     start_year = min(years) - 1
     end_year   = max(years) + 3
 
-    # Resolve CIK via EDGAR company name search
-    log.info(f"  Looking up CIK for '{entity}'")
-    cik = lookup_cik_by_name(entity)
-    if not cik:
-        result["status"] = "cik_not_resolved"
-        return result
+    # Resolve CIK — check override table first, fall back to fuzzy name search
+    aaer_str = str(aaer_num)
+    if aaer_str in CIK_OVERRIDES:
+        cik = CIK_OVERRIDES[aaer_str]
+        log.info(f"  Using CIK override: {cik} (skipping name lookup)")
+    else:
+        log.info(f"  Looking up CIK for '{entity}'")
+        cik = lookup_cik_by_name(entity)
+        if not cik:
+            result["status"] = "cik_not_resolved"
+            return result
     result["cik"] = cik
 
     # Get full submissions
@@ -505,15 +527,16 @@ def process_case(case: dict, dry_run: bool) -> dict:
 
     result["periods"] = period_results
 
-    # Save meta.json
-    if not dry_run and period_results:
-        meta_path = case_dir / "meta.json"
-        meta_path.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-
     complete = all(
         p.get("original") and p.get("restated") for p in period_results
     )
     result["status"] = "complete" if complete else ("partial" if period_results else "no_filings")
+
+    # Save meta.json (after status is set)
+    if not dry_run and period_results:
+        meta_path = case_dir / "meta.json"
+        meta_path.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+
     return result
 
 
@@ -556,10 +579,17 @@ def main():
             meta_path = OUTPUT_DIR / str(aaer) / "meta.json"
             if meta_path.exists():
                 existing = json.loads(meta_path.read_text(encoding="utf-8"))
-                if existing.get("status") not in ("pending", None):
-                    log.info(f"  Skipping (already fetched, status={existing['status']})")
+                stored_cik  = str(existing.get("cik") or "").lstrip("0")
+                override_cik = str(CIK_OVERRIDES.get(str(aaer), "")).lstrip("0")
+                cik_changed = bool(override_cik and stored_cik != override_cik)
+                if cik_changed:
+                    log.info(f"  CIK override changed ({stored_cik} → {override_cik}), re-processing")
+                elif existing.get("status") == "complete":
+                    log.info(f"  Skipping (already complete)")
                     results.append(existing)
                     continue
+                else:
+                    log.info(f"  Re-processing (status={existing['status']})")
 
         result = process_case(case, dry_run=args.dry_run)
         results.append(result)

@@ -283,11 +283,13 @@ edgar_filings/
     Q1-2019_restated.htm
 ```
 
+CIK overrides for companies that fuzzy-match incorrectly are stored in `cik_overrides.json` (project root). Entries there take priority over name lookup. `--resume` automatically re-processes cases where the stored CIK differs from the override.
+
 ```bash
 conda activate audit
 python fetch_filings.py --dry-run             # verify CIK resolution, no download
 python fetch_filings.py --limit 100           # first 100 cases
-python fetch_filings.py --resume              # skip already-fetched cases
+python fetch_filings.py --resume              # skip already-complete cases, retry partials
 python fetch_filings.py --aaer-num 4247       # single case
 ```
 
@@ -302,13 +304,15 @@ Assembles the final benchmark dataset from EDGAR filings. Uses two complementary
 
 **Output per record** (`benchmark_data/cases.json`):
 
+Each record has a top-level `tasks` key. Ground truth is stored under `label` (not `output`).
+
 | Task block | Input | Label |
 |---|---|---|
 | `task1_profit_source` | Reported financials + management attribution | True explanation + restated financials |
 | `task2_narrative` | Misleading passage + location | Why misleading + correcting quote from restatement |
 | `task3_pattern` | Fraud mechanism description | Category + accounting standard violated |
 
-Resumable: already-built cases are skipped on re-run. Use `--force` with `--aaer-num` to re-process a single case.
+Cases with no 10-K/A restatement on EDGAR still produce records; `task2_narrative` will be empty for those. Resumable: already-built cases are skipped on re-run. Use `--force` with `--aaer-num` to re-process a single case.
 
 ```bash
 conda activate audit
@@ -317,7 +321,13 @@ python build_benchmark.py --aaer-num 4247          # single case (skipped if alr
 python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
 python build_benchmark.py --skip-passages          # XBRL only, no DeepSeek call
 python build_benchmark.py --skip-xbrl             # DeepSeek only (if no XBRL data)
+python build_benchmark.py --patch-task1            # re-extract task1 attribution only for records with empty management_attribution
 ```
+
+**Current dataset stats (84 AAERs, 295 records as of May 2026):**
+- Task 1: 55% have good `management_attribution`; 9% missing XBRL financials
+- Task 2: 43% have real ground truth source; 57% original-only (no restatement available — expected)
+- Task 3: 100% populated
 
 **Output:**
 ```

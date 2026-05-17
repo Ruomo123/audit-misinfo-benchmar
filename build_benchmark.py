@@ -313,8 +313,8 @@ Return ONLY a valid JSON object with these fields:
 
 {{
   "task1": {{
-    "misleading_attribution": "<exact quote from original MD&A that attributes revenue growth or profit change to a legitimate business reason>",
-    "true_explanation": "<what actually drove the numbers, based on the restatement>"
+    "management_attribution": "<exact quote (1-3 sentences) from the original MD&A where management explains what drove revenue, earnings, or financial results for the period — extract the most relevant explanation of performance, even if it sounds reasonable. If no explicit attribution is found, write a 1-sentence summary of what management claims drove results>",
+    "true_explanation": "<what actually drove the numbers — use the restatement note if available, otherwise base this on the AAER fraud mechanism. Explain the real accounting manipulation in 1-2 sentences>"
   }},
   "task2": {{
     "misleading_passage": "<exact quote from original filing that is false or misleading>",
@@ -352,10 +352,11 @@ def extract_passages(
     original_mda: str,
     restated_note: str,
 ) -> dict:
+    restated_section = restated_note[:MAX_SECTION_CHARS] if restated_note else "[No restatement filing available — derive true_explanation from the AAER fraud mechanism above]"
     prompt = PASSAGE_PROMPT.format(
         mechanism=mechanism[:1000],
         original_mda=original_mda[:MAX_SECTION_CHARS],
-        restated_note=restated_note[:MAX_SECTION_CHARS],
+        restated_note=restated_section,
     )
     try:
         resp = client.chat.completions.create(
@@ -394,7 +395,7 @@ def build_record(
 
     # Financial figures from XBRL
     financials: dict[str, dict] = {}
-    if xbrl_facts and original_fi.get("accession") and restated_fi.get("accession"):
+    if xbrl_facts and original_fi.get("accession"):
         period_end = original_fi.get("report_date", "")
         for group in XBRL_CONCEPTS:
             financials[group] = get_xbrl_values(
@@ -402,7 +403,7 @@ def build_record(
                 group,
                 period_end,
                 original_fi["accession"],
-                restated_fi["accession"],
+                restated_fi.get("accession", ""),
             )
 
     task1 = passages.get("task1") or {}
@@ -446,7 +447,7 @@ def build_record(
                     "reported_financials": {
                         k: v.get("original") for k, v in financials.items()
                     },
-                    "management_attribution": task1.get("misleading_attribution", ""),
+                    "management_attribution": task1.get("management_attribution", "") or task1.get("misleading_attribution", ""),
                 },
                 "label": {
                     "attribution_correct": False,
@@ -527,25 +528,31 @@ def process_case(
         original_path = (period_info.get("original") or {}).get("local_path", "")
         restated_path = (period_info.get("restated") or {}).get("local_path", "")
 
-        if not original_path or not restated_path:
-            log.warning(f"  {period}: missing original or restated file path — skipping")
+        if not original_path:
+            log.warning(f"  {period}: missing original file path — skipping")
             continue
 
         orig_file = Path(original_path)
-        rest_file = Path(restated_path)
-
-        if not orig_file.exists() or not rest_file.exists():
-            log.warning(f"  {period}: filing files not found on disk — skipping")
+        if not orig_file.exists():
+            log.warning(f"  {period}: original filing not found on disk — skipping")
             continue
+
+        rest_file = Path(restated_path) if restated_path else None
+        if rest_file and not rest_file.exists():
+            log.warning(f"  {period}: restated filing not found on disk — proceeding without it")
+            rest_file = None
+
+        if not rest_file:
+            log.info(f"  {period}: no restatement — task2_narrative will be empty")
 
         passages: dict = {}
         if not skip_passages:
             log.info(f"  {period}: extracting text and calling LLM")
             orig_text = extract_text_from_file(orig_file)
-            rest_text = extract_text_from_file(rest_file)
+            rest_text = extract_text_from_file(rest_file) if rest_file else ""
 
             original_mda  = extract_section(orig_text, "7", ["7A", "8"])
-            restated_note = find_restatement_note(rest_text)
+            restated_note = find_restatement_note(rest_text) if rest_file else ""
 
             if not original_mda:
                 log.warning(f"  {period}: could not locate MD&A in original filing")
@@ -564,6 +571,142 @@ def process_case(
     return records
 
 
+TASK1_PROMPT = """\
+You are an expert in SEC financial disclosures and accounting fraud detection.
+
+Given the MD&A section of a company's original SEC filing and the fraud mechanism \
+identified by the SEC, extract two fields:
+
+1. management_attribution: A 1-3 sentence quote or faithful summary of what management \
+claimed drove revenue, earnings, or financial results for the period. Extract an exact \
+quote if one is clearly present; otherwise summarize the key performance claim management \
+made. Do not leave this empty.
+
+2. true_explanation: 1-2 sentences describing what actually drove the numbers, based on \
+the restatement note (if provided) or the AAER fraud mechanism.
+
+Return ONLY valid JSON:
+{{
+  "management_attribution": "...",
+  "true_explanation": "..."
+}}
+
+FRAUD MECHANISM FROM AAER:
+{mechanism}
+
+ORIGINAL FILING — MD&A SECTION:
+{original_mda}
+
+RESTATEMENT NOTE (may be empty):
+{restated_note}
+
+Return only valid JSON, no markdown fences.
+"""
+
+
+def extract_task1(
+    client: OpenAI,
+    mechanism: str,
+    original_mda: str,
+    restated_note: str,
+) -> dict:
+    restated_section = restated_note[:MAX_SECTION_CHARS] if restated_note else "[Not available — use fraud mechanism for true_explanation]"
+    prompt = TASK1_PROMPT.format(
+        mechanism=mechanism[:1000],
+        original_mda=original_mda[:MAX_SECTION_CHARS],
+        restated_note=restated_section,
+    )
+    try:
+        resp = client.chat.completions.create(
+            model=PASSAGE_MODEL,
+            temperature=0,
+            seed=42,
+            max_tokens=512,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = resp.choices[0].message.content.strip()
+        raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.DOTALL)
+        raw = re.sub(r"\s*```$", "", raw, flags=re.DOTALL)
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        log.warning(f"  JSON parse error from DeepSeek (task1): {e}")
+        return {}
+    except Exception as e:
+        log.warning(f"  DeepSeek API error (task1): {e}")
+        return {}
+
+
+def patch_task1(args, client: OpenAI) -> None:
+    """Re-run task1 extraction in-place for records with empty management_attribution."""
+    out_json = OUTPUT_DIR / "cases.json"
+    if not out_json.exists():
+        log.error("No cases.json found — run full build first")
+        return
+
+    records = json.loads(out_json.read_text(encoding="utf-8"))
+    cases_by_aaer = {}
+    cases_data = json.loads(Path(args.cases).read_text(encoding="utf-8"))
+    for c in cases_data:
+        cases_by_aaer[c["aaer_num"]] = c
+
+    patched = 0
+    for rec in records:
+        aaer_num = rec["aaer_num"]
+        if args.aaer_num and aaer_num != args.aaer_num:
+            continue
+
+        t1 = (rec.get("tasks") or {}).get("task1_profit_source") or {}
+        attr = (t1.get("input") or {}).get("management_attribution", "")
+        if attr.strip() and not args.force:
+            continue  # already has attribution, skip unless --force
+
+        period = rec.get("fiscal_period", "?")
+        log.info(f"  Patching task1 for AAER-{aaer_num} {period}")
+
+        # Load filing files from meta.json
+        meta_path = FILINGS_DIR / str(aaer_num) / "meta.json"
+        if not meta_path.exists():
+            log.warning(f"    No meta.json — skipping")
+            continue
+        filing_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+        # Find the period_info matching this record's fiscal_period
+        period_info = next(
+            (p for p in filing_meta.get("periods", []) if p.get("period") == period),
+            None,
+        )
+        if not period_info:
+            log.warning(f"    Period {period} not found in meta.json — skipping")
+            continue
+
+        orig_path = (period_info.get("original") or {}).get("local_path", "")
+        rest_path = (period_info.get("restated") or {}).get("local_path", "")
+        if not orig_path or not Path(orig_path).exists():
+            log.warning(f"    Original file missing — skipping")
+            continue
+
+        orig_text = extract_text_from_file(Path(orig_path))
+        rest_text = extract_text_from_file(Path(rest_path)) if rest_path and Path(rest_path).exists() else ""
+        original_mda = extract_section(orig_text, "7", ["7A", "8"])
+        restated_note = find_restatement_note(rest_text) if rest_text else ""
+
+        case = cases_by_aaer.get(aaer_num, {})
+        mechanism = case.get("specific_mechanism", "")
+
+        result = extract_task1(client, mechanism, original_mda or orig_text[:3000], restated_note)
+        if not result:
+            log.warning(f"    Empty response — skipping")
+            continue
+
+        rec["tasks"]["task1_profit_source"]["input"]["management_attribution"] = result.get("management_attribution", "")
+        if result.get("true_explanation"):
+            rec["tasks"]["task1_profit_source"]["label"]["true_explanation"] = result["true_explanation"]
+        patched += 1
+
+    out_json.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
+    log.info(f"Patched task1 for {patched} record(s). Saved to {out_json}")
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Build benchmark dataset from EDGAR filings")
     parser.add_argument("--cases", default=str(CASES_FILE))
@@ -575,6 +718,8 @@ def parse_args():
     parser.add_argument("--skip-xbrl", action="store_true")
     parser.add_argument("--skip-passages", action="store_true",
                         help="Skip DeepSeek extraction; assemble skeleton records only")
+    parser.add_argument("--patch-task1", action="store_true",
+                        help="Re-run task1 extraction in-place for records with empty management_attribution")
     return parser.parse_args()
 
 
@@ -585,34 +730,40 @@ def main():
     OUTPUT_DIR  = Path(args.out_dir)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        log.warning("DEEPSEEK_API_KEY not set — passage extraction will fail")
+    client = OpenAI(api_key=api_key, base_url=DEEPSEEK_BASE)
+
+    if args.patch_task1:
+        patch_task1(args, client)
+        return
+
     cases = json.loads(Path(args.cases).read_text(encoding="utf-8"))
     if args.aaer_num:
         cases = [c for c in cases if c.get("aaer_num") == args.aaer_num]
     log.info(f"Building benchmark for {len(cases)} cases")
 
     # Resume: load existing output and skip already-built cases
+    # --force only bypasses the skip-check; existing records for other cases are always preserved
     out_json = OUTPUT_DIR / "cases.json"
     existing_records: list[dict] = []
     done_aaers: set[int] = set()
-    if out_json.exists() and not args.force:
+    if out_json.exists():
         try:
             existing_records = json.loads(out_json.read_text(encoding="utf-8"))
             done_aaers = {r["aaer_num"] for r in existing_records}
-            log.info(f"Resuming: {len(done_aaers)} case(s) already built, will skip them")
+            log.info(f"Loaded {len(done_aaers)} existing case(s)")
         except Exception as e:
             log.warning(f"Could not read existing output, starting fresh: {e}")
 
-    api_key = os.getenv("DEEPSEEK_API_KEY")
-    if not api_key:
-        log.warning("DEEPSEEK_API_KEY not set — passage extraction will fail")
-    client = OpenAI(api_key=api_key, base_url=DEEPSEEK_BASE)
     all_records: list[dict] = []
 
     for i, case in enumerate(cases, 1):
         aaer = case.get("aaer_num", "?")
         entity = case.get("filing_entity") or case.get("aaer_respondent", "")
 
-        if aaer in done_aaers:
+        if aaer in done_aaers and not args.force:
             log.info(f"[{i}/{len(cases)}] AAER-{aaer} — skipping (already built)")
             continue
 
@@ -627,8 +778,10 @@ def main():
         all_records.extend(records)
         log.info(f"  → {len(records)} benchmark record(s) produced")
 
-    # Merge with existing and save
-    all_records = existing_records + all_records
+    # Merge with existing: drop old records for any aaer_num we just rebuilt, then prepend existing
+    rebuilt_aaers = {r["aaer_num"] for r in all_records}
+    kept_existing = [r for r in existing_records if r["aaer_num"] not in rebuilt_aaers]
+    all_records = kept_existing + all_records
     out_json.write_text(json.dumps(all_records, indent=2, ensure_ascii=False), encoding="utf-8")
 
     # Save flat CSV

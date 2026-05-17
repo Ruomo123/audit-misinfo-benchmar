@@ -2548,5 +2548,32 @@
     "legal_signals": [
       "section_13a"
     ]
+  },
+  {
+    "aaer_num": 2941,
+    "aaer_respondent": "Krispy Kreme Doughnuts, Inc.",
+    "filing_entity": "Krispy Kreme Doughnuts, Inc.",
+    "primary_category": "REVENUE_TIMING",
+    "secondary_categories": [],
+    "specific_mechanism": "Krispy Kreme fraudulently inflated or misrepresented its earnings to meet or exceed EPS guidance by one cent each quarter, but the summary does not specify the exact revenue recognition technique used.",
+    "fiscal_periods_affected": [
+      "FY2003-Q4",
+      "FY2004-Q1",
+      "FY2004-Q2",
+      "FY2004-Q3",
+      "FY2004-Q4",
+      "FY2004"
+    ],
+    "period_free_text": "FY2003-Q4 through FY2004-Q4",
+    "dollar_impact": "",
+    "respondent_type": "issuer",
+    "llm_confidence": 0.6,
+    "pdf_name": "AAER-2941.pdf",
+    "release_no": "34-59499, AAER-2941",
+    "sec_date": "March 4, 2009",
+    "reasoning": "The AAER describes fraudulent inflation of earnings to meet EPS targets, which typically involves premature or fictitious revenue recognition, though the exact mechanism is not detailed; revenue timing is the most common fraud in such EPS-driven schemes.",
+    "legal_signals": [
+      "section_13a"
+    ]
   }
 ]

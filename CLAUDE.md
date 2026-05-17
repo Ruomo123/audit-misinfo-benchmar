@@ -65,6 +65,7 @@ python build_benchmark.py --aaer-num 4247          # single case (skipped if alr
 python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
 python build_benchmark.py --skip-xbrl             # skip XBRL lookup
 python build_benchmark.py --skip-passages         # assemble skeleton records only (no DeepSeek)
+python build_benchmark.py --patch-task1            # re-extract task1 attribution only for records with empty management_attribution
 ```
 
 ## Recommended Workflow
@@ -117,13 +118,15 @@ SEC Website → download_litrel.py → litrel_data/
 
 **`select_top_cases.py`** filters enriched records to EDGAR-traceable issuer cases with `llm_confidence >= 0.7` (adjustable), ranks by confidence + dollar impact, outputs `selected_cases.json`. Defaults: `--top-n 1000`, `--conf 0.7`.
 
-**`fetch_filings.py`** resolves CIK via browse-edgar company search, matches filings by form type + fiscal period, downloads original (10-K/10-Q) and restatement (10-K/A, 10-Q/A) documents. Supports `--resume` (skip already-fetched) and `--limit N` (first N cases only).
+**`fetch_filings.py`** resolves CIK via browse-edgar company search, matches filings by form type + fiscal period, downloads original (10-K/10-Q) and restatement (10-K/A, 10-Q/A) documents. Supports `--resume` (skip already-fetched) and `--limit N` (first N cases only). CIK overrides for companies that fuzzy-match incorrectly are stored in `cik_overrides.json` (project root); entries there take priority over name lookup, and `--resume` automatically re-processes cases where the override CIK differs from the stored CIK.
 
 **`build_benchmark.py`** assembles the final benchmark:
 - Financial figures from EDGAR XBRL company facts API (concepts: revenue, ar_net, net_income, gross_profit)
 - Text passages extracted by DeepSeek (`deepseek-chat`, `temperature=0`), sections capped at 6000 chars
 - Resumable: skips cases already in `benchmark_data/cases.json`; use `--force` with `--aaer-num` to re-run a case
-- Output schema has three task blocks per case: `task1_profit_source`, `task2_narrative`, `task3_pattern`
+- Original-only cases (no 10-K/A on EDGAR) produce records with `task2_narrative` empty
+- Output schema: each record has a top-level `tasks` key with `task1_profit_source`, `task2_narrative`, `task3_pattern`; ground truth is under `label` (not `output`)
+- `--patch-task1`: re-runs only task 1 extraction for records with empty `management_attribution` — does not re-run task 2/3
 
 **`check_pdfs.py`** should be run before filtering: flags corrupt files and those with <100 chars of extractable text, writes results to `aaer_data/bad_pdfs.json`.
 
