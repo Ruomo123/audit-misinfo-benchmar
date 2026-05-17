@@ -11,8 +11,15 @@ Building a benchmark dataset for detecting financial misinformation in SEC-enfor
 ## Environment
 
 ```bash
-conda activate audit   # Python 3.11
-# Dependencies: requests, beautifulsoup4, pdfplumber (+ pypdf as fallback)
+conda create -n audit python=3.11 -y
+conda activate audit
+pip install requests beautifulsoup4 pdfplumber pypdf openai python-dotenv
+```
+
+API keys go in a `.env` file in the project root:
+```
+DEEPSEEK_API_KEY=...
+ANTHROPIC_API_KEY=...   # only needed for enrich_aaers.py
 ```
 
 ## Common Commands
@@ -28,31 +35,95 @@ python download_aaers.py --from-year 2024 --from-month 6 --max-cases 200
 python download_aaers.py --max-cases 50
 python download_aaers.py --refresh-index   # Re-scrape index if new AAERs added
 
-# Litigation releases (broader scope than AAERs)
+# Litigation releases (all SEC civil court actions — not just auditing; filter after download)
 python download_litrel.py --from-year 2025
 
 # Validate downloaded PDFs (detect scanned/corrupt)
 python check_pdfs.py             # Report only
 python check_pdfs.py --delete    # Report and delete bad files
 
-# Classify AAERs by fraud category
+# Classify AAERs (v1: keyword-based; v2: LLM-based, requires DEEPSEEK_API_KEY)
 python filter_aaers.py
+python filter_aaers_v2.py
+
+# LLM enrichment — extracts company name, fiscal periods, mechanism (requires ANTHROPIC_API_KEY)
+python enrich_aaers.py --max-cases 10   # trial run
+python enrich_aaers.py --resume         # safe restart
+
+# Select high-confidence EDGAR-traceable cases
+python select_top_cases.py              # default: top 1000, conf >= 0.7
+python select_top_cases.py --top-n 30 --conf 0.8
+
+# Download matching EDGAR filings (10-K + 10-K/A)
+python fetch_filings.py --dry-run       # verify CIK resolution, no download
+python fetch_filings.py --limit 100     # first 100 cases only
+python fetch_filings.py --resume        # skip already-fetched cases
+
+# Assemble final benchmark records
+python build_benchmark.py                          # full run; skips already-built cases
+python build_benchmark.py --aaer-num 4247          # single case (skipped if already built)
+python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
+python build_benchmark.py --skip-xbrl             # skip XBRL lookup
+python build_benchmark.py --skip-passages         # assemble skeleton records only (no DeepSeek)
+```
+
+## Recommended Workflow
+
+### Stage 1 — Collect & Classify AAERs
+```bash
+python test_download.py                          # verify connectivity
+python download_aaers.py --from-year 2025        # download AAERs
+python download_litrel.py --from-year 2025       # download litigation releases
+python check_pdfs.py --delete                    # remove scanned/corrupt PDFs
+python filter_aaers.py                           # v1 keyword classifier
+python filter_aaers_v2.py --sample 0             # v2 LLM classifier (DEEPSEEK_API_KEY)
+python select_top_cases.py                       # select top 1000, conf >= 0.7
+```
+
+### Stage 2 — Build Benchmark
+```bash
+python enrich_aaers.py --resume                  # LLM-enrich AAER records (ANTHROPIC_API_KEY)
+python select_top_cases.py                       # select high-confidence cases (top 1000)
+python fetch_filings.py --limit 100 --dry-run    # verify CIK resolution
+python fetch_filings.py --limit 100              # download first 100
+python fetch_filings.py --resume                 # resume; skip already-fetched
+python build_benchmark.py                        # assemble benchmark records (resumable)
 ```
 
 ## Architecture & Data Flow
 
 ```
-SEC Website → download_aaers.py  → aaer_data/   → check_pdfs.py → filter_aaers.py → aaer_filtered/
+SEC Website → download_aaers.py  → aaer_data/        → check_pdfs.py
+                                                       → filter_aaers.py    → aaer_filtered/
+                                                       → filter_aaers_v2.py → aaer_filtered_v2/
+                                                       → enrich_aaers.py    → aaer_filtered_v2/ (enriched)
+                                                       → select_top_cases.py → selected_cases.json
+                                                       → fetch_filings.py   → edgar_filings/
+                                                       → build_benchmark.py → benchmark_data/
 SEC Website → download_litrel.py → litrel_data/
 ```
 
 **`download_aaers.py`** and **`download_litrel.py`** share the same structure: paginate the SEC index (newest-first), scrape entry metadata, download PDFs, and save JSON sidecars alongside each PDF. Both support `--from-year`, `--from-month`, `--max-cases`, `--out-dir`, `--refresh-index`. The index is cached to `*_index.json` and only re-scraped with `--refresh-index`. Files already on disk are skipped (status: `cached`). Progress is checkpointed every 200 files.
 
-**`filter_aaers.py`** pipeline per PDF:
+**`filter_aaers.py`** (v1, keyword-based) pipeline per PDF:
 1. Extract text via `pdfplumber`, fall back to `pypdf`; skip if <200 chars (scanned image)
 2. Run regex patterns (case-insensitive, word-boundary anchored) for 5 fraud categories
 3. Capture 300-char context snippets around each match
 4. Detect auditor involvement via `AUDITOR_PATTERNS` (auditor, CPA, PCAOB, GAAP, audit opinion, etc.)
+
+**`filter_aaers_v2.py`** (v2, LLM-based) uses DeepSeek (`deepseek-chat`) for higher-precision classification. Requires `DEEPSEEK_API_KEY` in `.env`.
+
+**`enrich_aaers.py`** calls Claude Haiku to extract structured metadata per AAER: `filing_entity`, `ticker`, `fiscal_periods_affected`, `primary_category`, `specific_mechanism`, `dollar_impact`, `respondent_type`, `traceable_to_financials`, `llm_confidence`. Output: `aaer_filtered_v2/aaer_dataset_v2.json`. Requires `ANTHROPIC_API_KEY`. Run `filter_aaers.py` first so texts exist in `aaer_filtered/texts/`.
+
+**`select_top_cases.py`** filters enriched records to EDGAR-traceable issuer cases with `llm_confidence >= 0.7` (adjustable), ranks by confidence + dollar impact, outputs `selected_cases.json`. Defaults: `--top-n 1000`, `--conf 0.7`.
+
+**`fetch_filings.py`** resolves CIK via browse-edgar company search, matches filings by form type + fiscal period, downloads original (10-K/10-Q) and restatement (10-K/A, 10-Q/A) documents. Supports `--resume` (skip already-fetched) and `--limit N` (first N cases only).
+
+**`build_benchmark.py`** assembles the final benchmark:
+- Financial figures from EDGAR XBRL company facts API (concepts: revenue, ar_net, net_income, gross_profit)
+- Text passages extracted by DeepSeek (`deepseek-chat`, `temperature=0`), sections capped at 6000 chars
+- Resumable: skips cases already in `benchmark_data/cases.json`; use `--force` with `--aaer-num` to re-run a case
+- Output schema has three task blocks per case: `task1_profit_source`, `task2_narrative`, `task3_pattern`
 
 **`check_pdfs.py`** should be run before filtering: flags corrupt files and those with <100 chars of extractable text, writes results to `aaer_data/bad_pdfs.json`.
 
@@ -86,6 +157,24 @@ litrel_data/
   download_log.json
   LR-XXXXX-{type}.pdf      # Multiple PDFs per release (complaint, judgment, etc.)
   LR-XXXXX.json            # Metadata sidecar
+
+aaer_filtered_v2/
+  aaer_dataset_v2.json     # LLM-enriched records (enrich_aaers.py output)
+  aaer_dataset_v2.csv      # Flat CSV version
+  aaer_by_category_v2.json # Grouped by fraud category
+  comparison_vs_v1.json    # Diff between v1 and v2 filter results
+  selected_cases.json      # High-confidence EDGAR-traceable cases (select_top_cases.py)
+  selected_cases.csv
+
+edgar_filings/
+  {aaer_num}/
+    meta.json              # CIK, accession numbers, local paths
+    FY2018_original.htm    # Original 10-K (or .pdf)
+    FY2018_restated.htm    # 10-K/A restatement
+
+benchmark_data/
+  cases.json               # Full structured benchmark records (task1/2/3 blocks)
+  cases.csv                # Flat: one row per case/period
 ```
 
 ## Fraud Categories
@@ -100,6 +189,8 @@ litrel_data/
 
 ## Benchmark Tasks (Research Goals)
 
-- **Task 1**: Source of Profit Change Detection — identify misleading earnings attribution
-- **Task 2**: Misleading Narrative Detection — MD&A distortion
-- **Task 3**: Fraud Pattern Recognition — classify fraud type from AAER text
+| Task | Description | Relevant Categories |
+|---|---|---|
+| Task 1: Source of Profit Change Detection | Identify when management misattributes earnings drivers | `REVENUE_TIMING`, `EARNINGS_SMOOTHING` |
+| Task 2: Misleading Narrative Detection | Detect narrative claims unsupported by financial evidence | `NARRATIVE_DISTORTION` |
+| Task 3: Fraud Pattern Recognition | Map reporting patterns to known manipulation types | All categories |

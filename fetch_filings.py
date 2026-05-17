@@ -26,16 +26,19 @@ import urllib.parse
 from pathlib import Path
 
 import requests
+from bs4 import BeautifulSoup
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-USER_AGENT    = "Columbia University Research contact@columbia.edu"
+USER_AGENT    = "Columbia University Research yh3507@columbia.edu"
 INPUT_FILE    = Path("aaer_filtered_v2/selected_cases.json")
 OUTPUT_DIR    = Path("edgar_filings")
 DELAY         = 0.3    # seconds between SEC requests
 BASE_SEC      = "https://www.sec.gov"
 EFTS_URL      = "https://efts.sec.gov/LATEST/search-index"
 SUBMISSIONS   = "https://data.sec.gov/submissions/CIK{cik:010d}.json"
+SUBMISSIONS_BASE = "https://data.sec.gov/submissions/"
 FILING_ROOT   = "https://www.sec.gov/Archives/edgar/data/{cik}/{accn}/"
+BROWSE_EDGAR  = "https://www.sec.gov/cgi-bin/browse-edgar"
 # ──────────────────────────────────────────────────────────────────────────────
 
 logging.basicConfig(
@@ -78,13 +81,131 @@ def fetch(url: str, stream: bool = False, retries: int = 3):
     return None
 
 
-# ── EDGAR search ──────────────────────────────────────────────────────────────
+# ── CIK lookup via EDGAR company search ──────────────────────────────────────
+
+def _name_words(name: str) -> set:
+    """Lowercase words with punctuation stripped, for fuzzy name matching."""
+    return {re.sub(r"[^\w]", "", w) for w in name.lower().split() if re.sub(r"[^\w]", "", w)}
+
+
+def lookup_cik_by_name(entity_name: str) -> "str | None":
+    """
+    Resolve company name → CIK using EDGAR browse-edgar company search.
+    Searches by filer name (not document content).
+
+    EDGAR returns two possible page formats:
+    - Company list: multiple matches → table with company names + CIK column
+    - Filings list: exact/single match → table with accession numbers (CIK is the
+      10-digit prefix of each Acc-no, e.g. Acc-no: 0001124610-23-000015)
+
+    Tries progressively shorter name prefixes, and searches all form types
+    so foreign issuers (20-F) and older filers are not excluded.
+    """
+    words = entity_name.split()
+    prefixes = [entity_name]
+    if len(words) >= 3:
+        prefixes.append(" ".join(words[:3]))
+    if len(words) >= 2 and len(words) != 2:
+        prefixes.append(" ".join(words[:2]))
+    if len(words) >= 1:
+        prefixes.append(words[0])  # first word only as last resort
+
+    for prefix in prefixes:
+        params = {
+            "company":     prefix,
+            "CIK":         "",
+            "type":        "",        # all form types — catches 20-F, old filings, etc.
+            "dateb":       "",
+            "owner":       "include",
+            "count":       "20",
+            "search_text": "",
+            "action":      "getcompany",
+        }
+        url = BROWSE_EDGAR + "?" + urllib.parse.urlencode(params)
+        resp = fetch(url)
+        if not resp:
+            continue
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+        table = soup.find("table", {"class": "tableFile2"})
+        if not table:
+            continue
+
+        rows = table.find_all("tr")
+        if len(rows) < 2:
+            continue
+
+        header_text = rows[0].get_text(strip=True)
+
+        # ── Case 1: Filings list (direct match) ──────────────────────────────
+        # browse-edgar jumped straight to one company's filing page.
+        # The CIK is in the companyInfo/companyName span as "CIK#:XXXXXXXXXX".
+        # Validate the company name before accepting.
+        if "Description" in header_text or "Filing Date" in header_text:
+            info = soup.find(attrs={"class": "companyInfo"}) or \
+                   soup.find(attrs={"class": "companyName"})
+            if not info:
+                continue
+            info_text = info.get_text(" ", strip=True)
+            m_cik  = re.search(r"CIK\s*#?\s*:?\s*(\d+)", info_text)
+            if not m_cik:
+                continue
+            # Validate: company name before "CIK#" should match target
+            page_name = info_text.split("CIK")[0].strip()
+            words_e = _name_words(entity_name)
+            words_p = _name_words(page_name)
+            overlap = len(words_e & words_p) / max(len(words_e), 1)
+            name_ok = overlap >= 0.4
+            if not name_ok:
+                log.debug(f"  Direct match name mismatch: '{page_name}' vs '{entity_name}'")
+                continue
+            cik = m_cik.group(1).lstrip("0") or "0"
+            log.info(f"  CIK resolved (direct match): {cik} ({page_name}) for '{entity_name}'")
+            return cik
+
+        # ── Case 2: Company list (multiple matches) ───────────────────────────
+        # Header contains "CIK" — parse each row for company name + CIK.
+        words_e = _name_words(entity_name)
+        best_score, best_cik, best_name = 0, None, ""
+        for row in rows[1:]:
+            cols = row.find_all("td")
+            if len(cols) < 2:
+                continue
+            # Browse-edgar company list columns: CIK | Company Name | State
+            cik_text = cols[0].get_text(strip=True)
+            name = cols[1].get_text(strip=True)
+            if not re.match(r"\d+", cik_text):
+                continue
+            words_n = _name_words(name)
+            entity_lower = entity_name.lower()
+            name_lower = name.lower()
+
+            if name_lower == entity_lower:
+                score = 3
+            elif entity_lower in name_lower or name_lower in entity_lower:
+                score = 2
+            else:
+                score = len(words_e & words_n) / max(len(words_e), 1)
+
+            if score > best_score:
+                best_score = score
+                best_cik = re.sub(r"\D", "", cik_text)  # digits only
+                best_name = name
+
+        if best_cik and best_score >= 0.4:
+            log.info(f"  CIK resolved (company list): {best_cik} ({best_name}, score={best_score:.2f})")
+            return best_cik
+
+    log.warning(f"  Could not resolve CIK for '{entity_name}' via company search")
+    return None
+
+
+# ── EDGAR filing search (EFTS) ────────────────────────────────────────────────
 
 def search_edgar(entity_name: str, forms: list[str], start_year: int, end_year: int) -> list[dict]:
     """
-    Full-text search EDGAR EFTS for an entity name + form types.
-    Returns list of hit dicts with keys: entity_name, entity_id (CIK),
-    accession_no, file_date, form_type, period_of_report.
+    Full-text search EDGAR EFTS for filings by a known entity name + form types.
+    Used ONLY for finding specific filings after CIK is already resolved.
     """
     query = f'"{entity_name}"'
     params = {
@@ -93,7 +214,6 @@ def search_edgar(entity_name: str, forms: list[str], start_year: int, end_year: 
         "dateRange":   "custom",
         "startdt":     f"{start_year}-01-01",
         "enddt":       f"{end_year}-12-31",
-        "hits.hits.total.relation": "eq",
     }
     url = EFTS_URL + "?" + urllib.parse.urlencode(params)
     resp = fetch(url)
@@ -107,55 +227,39 @@ def search_edgar(entity_name: str, forms: list[str], start_year: int, end_year: 
     return [h.get("_source", {}) for h in hits]
 
 
-def pick_best_cik(hits: list[dict], entity_name: str) -> str | None:
-    """
-    From EFTS hits, pick the CIK whose entity_name best matches.
-    Returns the CIK string (zero-padded to 10 digits) or None.
-    """
-    entity_lower = entity_name.lower()
-    scored = []
-    for h in hits:
-        name = (h.get("entity_name") or h.get("display_names") or [""])[0]
-        if isinstance(name, dict):
-            name = name.get("name", "")
-        name_lower = name.lower()
-        # Score: exact match > starts-with > word overlap
-        if name_lower == entity_lower:
-            score = 3
-        elif entity_lower in name_lower or name_lower in entity_lower:
-            score = 2
-        else:
-            words_e = set(entity_lower.split())
-            words_n = set(name_lower.split())
-            overlap = len(words_e & words_n)
-            score = overlap / max(len(words_e), 1)
-        cik = h.get("entity_id") or h.get("_id", "")
-        scored.append((score, cik, name))
-
-    if not scored:
-        return None
-    scored.sort(reverse=True)
-    best_score, best_cik, best_name = scored[0]
-    if best_score == 0:
-        log.warning(f"  No name match above 0 for '{entity_name}' — best was '{best_name}'")
-        return None
-    log.info(f"  CIK resolved: {best_cik} ({best_name}, score={best_score:.2f})")
-    return best_cik.lstrip("0") or "0"
-
-
 # ── Submissions API ───────────────────────────────────────────────────────────
 
-def get_submissions(cik: str) -> dict | None:
-    """Fetch all filing metadata for a company from data.sec.gov."""
+def get_submissions(cik: str) -> "dict | None":
+    """
+    Fetch all filing metadata for a company from data.sec.gov.
+    Merges paginated older filings from filings.files into filings.recent.
+    """
     cik_int = int(cik)
     url = SUBMISSIONS.format(cik=cik_int)
     resp = fetch(url)
     if not resp:
         return None
-    return resp.json()
+    data = resp.json()
+
+    # EDGAR paginates older filings into separate JSON files listed in filings.files
+    extra_files = data.get("filings", {}).get("files", [])
+    for extra in extra_files:
+        extra_url = SUBMISSIONS_BASE + extra["name"]
+        extra_resp = fetch(extra_url)
+        if not extra_resp:
+            continue
+        try:
+            extra_data = extra_resp.json()
+        except Exception:
+            continue
+        for key in data["filings"]["recent"]:
+            if key in extra_data:
+                data["filings"]["recent"][key].extend(extra_data[key])
+
+    return data
 
 
-def parse_fiscal_period(period_str: str) -> tuple[str, int] | None:
+def parse_fiscal_period(period_str: str) -> "tuple[str, int] | None":
     """
     Parse a period string like 'FY2018' or 'Q1 2019'.
     Returns (fp, fy) matching EDGAR conventions: ('FY',2018) or ('Q1',2019).
@@ -174,7 +278,7 @@ def find_filings_for_period(
     fiscal_period: str,
     base_forms: list[str],
     amended_forms: list[str],
-) -> tuple[dict | None, list[dict]]:
+) -> "tuple[dict | None, list[dict]]":
     """
     Search submissions for the original + amendment(s) matching fiscal_period.
     Returns (original_filing, [amended_filings]).
@@ -301,11 +405,11 @@ def process_case(case: dict, dry_run: bool) -> dict:
     has_quarter = any(re.match(r"Q[1-4]", p) for p in periods)
     search_forms = []
     if has_annual:
-        search_forms += ["10-K", "10-K/A"]
+        search_forms += ["10-K", "10-K/A", "20-F", "20-F/A"]
     if has_quarter:
         search_forms += ["10-Q", "10-Q/A"]
     if not search_forms:
-        search_forms = ["10-K", "10-K/A"]
+        search_forms = ["10-K", "10-K/A", "20-F", "20-F/A"]
 
     # Determine search year range
     years = []
@@ -319,15 +423,9 @@ def process_case(case: dict, dry_run: bool) -> dict:
     start_year = min(years) - 1
     end_year   = max(years) + 3
 
-    # Search EDGAR
-    log.info(f"  Searching EDGAR for '{entity}' forms={search_forms} {start_year}–{end_year}")
-    hits = search_edgar(entity, search_forms, start_year, end_year)
-    if not hits:
-        log.warning(f"  No EDGAR hits for '{entity}'")
-        result["status"] = "not_found"
-        return result
-
-    cik = pick_best_cik(hits, entity)
+    # Resolve CIK via EDGAR company name search
+    log.info(f"  Looking up CIK for '{entity}'")
+    cik = lookup_cik_by_name(entity)
     if not cik:
         result["status"] = "cik_not_resolved"
         return result
@@ -354,8 +452,8 @@ def process_case(case: dict, dry_run: bool) -> dict:
             continue
         fp, fy = parsed
         is_annual = (fp == "FY")
-        base_forms     = ["10-K"] if is_annual else ["10-Q"]
-        amended_forms  = ["10-K/A"] if is_annual else ["10-Q/A"]
+        base_forms     = ["10-K", "20-F"] if is_annual else ["10-Q"]
+        amended_forms  = ["10-K/A", "20-F/A"] if is_annual else ["10-Q/A"]
 
         original, amendments = find_filings_for_period(
             submissions, period, base_forms, amended_forms
@@ -427,6 +525,10 @@ def parse_args():
                         help="Process a single AAER number")
     parser.add_argument("--dry-run", action="store_true",
                         help="Find filings and log results without downloading")
+    parser.add_argument("--resume", action="store_true",
+                        help="Skip cases that already have a completed meta.json")
+    parser.add_argument("--limit", type=int, default=None,
+                        help="Process only the first N cases from the input file")
     return parser.parse_args()
 
 
@@ -440,6 +542,8 @@ def main():
     cases = json.loads(in_path.read_text(encoding="utf-8"))
     if args.aaer_num:
         cases = [c for c in cases if c.get("aaer_num") == args.aaer_num]
+    if args.limit:
+        cases = cases[:args.limit]
     log.info(f"Processing {len(cases)} cases{'  [DRY RUN]' if args.dry_run else ''}")
 
     results = []
@@ -447,6 +551,16 @@ def main():
         aaer = case.get("aaer_num", "?")
         entity = case.get("filing_entity", "")
         log.info(f"[{i}/{len(cases)}] AAER-{aaer} — {entity[:60]}")
+
+        if args.resume and not args.dry_run:
+            meta_path = OUTPUT_DIR / str(aaer) / "meta.json"
+            if meta_path.exists():
+                existing = json.loads(meta_path.read_text(encoding="utf-8"))
+                if existing.get("status") not in ("pending", None):
+                    log.info(f"  Skipping (already fetched, status={existing['status']})")
+                    results.append(existing)
+                    continue
+
         result = process_case(case, dry_run=args.dry_run)
         results.append(result)
         log.info(f"  status: {result['status']}")

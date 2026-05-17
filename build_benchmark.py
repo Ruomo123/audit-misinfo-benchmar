@@ -3,7 +3,7 @@ Benchmark record builder.
 
 For each case with downloaded EDGAR filings:
   1. Financial figures  → EDGAR XBRL company facts API (exact, no text parsing)
-  2. Text passages      → Claude API (MD&A, revenue note, restatement note)
+  2. Text passages      → DeepSeek API (MD&A, revenue note, restatement note)
   3. Assembles the full benchmark JSON matching the agreed schema
 
 Input:
@@ -16,22 +16,27 @@ Output:
   benchmark_data/cases.csv
 
 Usage:
-  python build_benchmark.py
-  python build_benchmark.py --aaer-num 4247
-  python build_benchmark.py --skip-xbrl     # if company has no XBRL data
-  python build_benchmark.py --skip-passages # only run XBRL, skip Claude extraction
+  python build_benchmark.py                          # full run; skips already-built cases
+  python build_benchmark.py --aaer-num 4247          # single case (skipped if already built)
+  python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
+  python build_benchmark.py --skip-xbrl             # skip XBRL lookup
+  python build_benchmark.py --skip-passages         # assemble skeleton records only (no DeepSeek)
 """
 
 import argparse
 import csv
 import json
 import logging
+import os
 import re
 import time
 from pathlib import Path
 
-import anthropic
 import requests
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
 
 # PDF extraction
 try:
@@ -52,9 +57,10 @@ FILINGS_DIR   = Path("edgar_filings")
 AAER_TEXTS    = Path("aaer_filtered/texts")
 OUTPUT_DIR    = Path("benchmark_data")
 XBRL_URL      = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
-USER_AGENT    = "Columbia University Research contact@columbia.edu"
+USER_AGENT    = "Columbia University Research yh3507@columbia.edu"
 DELAY         = 0.3
-PASSAGE_MODEL = "claude-sonnet-4-6"
+PASSAGE_MODEL = "deepseek-chat"
+DEEPSEEK_BASE = "https://api.deepseek.com"
 
 # XBRL concepts to pull (in priority order — first hit wins per category)
 XBRL_CONCEPTS = {
@@ -78,7 +84,7 @@ XBRL_CONCEPTS = {
     ],
 }
 
-# Max characters of filing text sent to Claude per section
+# Max characters of filing text sent to DeepSeek per section
 MAX_SECTION_CHARS = 6000
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -230,7 +236,7 @@ def find_restatement_note(text: str) -> str:
 
 # ── XBRL ─────────────────────────────────────────────────────────────────────
 
-def fetch_xbrl_facts(cik: str) -> dict | None:
+def fetch_xbrl_facts(cik: str) -> "dict | None":
     """Fetch all company XBRL facts from data.sec.gov."""
     url = XBRL_URL.format(cik=int(cik))
     resp = fetch(url)
@@ -291,7 +297,7 @@ def get_xbrl_values(
     return {"concept": None, "original": None, "restated": None, "delta": None}
 
 
-# ── Claude passage extraction ─────────────────────────────────────────────────
+# ── LLM passage extraction ─────────────────────────────────────────────────
 
 PASSAGE_PROMPT = """\
 You are an expert in SEC financial disclosures and accounting fraud detection.
@@ -341,7 +347,7 @@ Return only valid JSON, no markdown fences.
 
 
 def extract_passages(
-    client: anthropic.Anthropic,
+    client: OpenAI,
     mechanism: str,
     original_mda: str,
     restated_note: str,
@@ -352,20 +358,22 @@ def extract_passages(
         restated_note=restated_note[:MAX_SECTION_CHARS],
     )
     try:
-        message = client.messages.create(
+        resp = client.chat.completions.create(
             model=PASSAGE_MODEL,
+            temperature=0,
+            seed=42,
             max_tokens=2048,
             messages=[{"role": "user", "content": prompt}],
         )
-        raw = message.content[0].text.strip()
-        raw = re.sub(r"^```(?:json)?\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw)
+        raw = resp.choices[0].message.content.strip()
+        raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.DOTALL)
+        raw = re.sub(r"\s*```$", "", raw, flags=re.DOTALL)
         return json.loads(raw)
     except json.JSONDecodeError as e:
-        log.warning(f"  JSON parse error from Claude: {e}")
+        log.warning(f"  JSON parse error from DeepSeek: {e}")
         return {"extraction_confidence": 0.0, "extraction_notes": f"parse_error: {e}"}
     except Exception as e:
-        log.warning(f"  Claude API error: {e}")
+        log.warning(f"  DeepSeek API error: {e}")
         return {"extraction_confidence": 0.0, "extraction_notes": f"api_error: {e}"}
 
 
@@ -374,7 +382,7 @@ def extract_passages(
 def build_record(
     case: dict,
     period_info: dict,
-    xbrl_facts: dict | None,
+    xbrl_facts: "dict | None",
     passages: dict,
 ) -> dict:
     period       = period_info["period"]
@@ -397,9 +405,9 @@ def build_record(
                 restated_fi["accession"],
             )
 
-    task1 = passages.get("task1", {})
-    task2 = passages.get("task2", {})
-    task3 = passages.get("task3", {})
+    task1 = passages.get("task1") or {}
+    task2 = passages.get("task2") or {}
+    task3 = passages.get("task3") or {}
 
     record = {
         "case_id":      case_id,
@@ -490,7 +498,7 @@ def build_record(
 
 def process_case(
     case: dict,
-    client: anthropic.Anthropic,
+    client: OpenAI,
     skip_xbrl: bool,
     skip_passages: bool,
 ) -> list[dict]:
@@ -516,8 +524,8 @@ def process_case(
     for period_info in filing_meta.get("periods", []):
         period_info["cik"] = cik
         period = period_info["period"]
-        original_path = period_info.get("original", {}).get("local_path", "")
-        restated_path = period_info.get("restated", {}).get("local_path", "")
+        original_path = (period_info.get("original") or {}).get("local_path", "")
+        restated_path = (period_info.get("restated") or {}).get("local_path", "")
 
         if not original_path or not restated_path:
             log.warning(f"  {period}: missing original or restated file path — skipping")
@@ -532,7 +540,7 @@ def process_case(
 
         passages: dict = {}
         if not skip_passages:
-            log.info(f"  {period}: extracting text and calling Claude")
+            log.info(f"  {period}: extracting text and calling LLM")
             orig_text = extract_text_from_file(orig_file)
             rest_text = extract_text_from_file(rest_file)
 
@@ -562,9 +570,11 @@ def parse_args():
     parser.add_argument("--filings-dir", default=str(FILINGS_DIR))
     parser.add_argument("--out-dir", default=str(OUTPUT_DIR))
     parser.add_argument("--aaer-num", type=int, default=None)
+    parser.add_argument("--force", action="store_true",
+                        help="Re-run even if aaer_num already exists in output (use with --aaer-num)")
     parser.add_argument("--skip-xbrl", action="store_true")
     parser.add_argument("--skip-passages", action="store_true",
-                        help="Skip Claude extraction; assemble skeleton records only")
+                        help="Skip DeepSeek extraction; assemble skeleton records only")
     return parser.parse_args()
 
 
@@ -580,12 +590,32 @@ def main():
         cases = [c for c in cases if c.get("aaer_num") == args.aaer_num]
     log.info(f"Building benchmark for {len(cases)} cases")
 
-    client = anthropic.Anthropic()
+    # Resume: load existing output and skip already-built cases
+    out_json = OUTPUT_DIR / "cases.json"
+    existing_records: list[dict] = []
+    done_aaers: set[int] = set()
+    if out_json.exists() and not args.force:
+        try:
+            existing_records = json.loads(out_json.read_text(encoding="utf-8"))
+            done_aaers = {r["aaer_num"] for r in existing_records}
+            log.info(f"Resuming: {len(done_aaers)} case(s) already built, will skip them")
+        except Exception as e:
+            log.warning(f"Could not read existing output, starting fresh: {e}")
+
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        log.warning("DEEPSEEK_API_KEY not set — passage extraction will fail")
+    client = OpenAI(api_key=api_key, base_url=DEEPSEEK_BASE)
     all_records: list[dict] = []
 
     for i, case in enumerate(cases, 1):
         aaer = case.get("aaer_num", "?")
         entity = case.get("filing_entity") or case.get("aaer_respondent", "")
+
+        if aaer in done_aaers:
+            log.info(f"[{i}/{len(cases)}] AAER-{aaer} — skipping (already built)")
+            continue
+
         log.info(f"[{i}/{len(cases)}] AAER-{aaer} — {entity[:60]}")
 
         try:
@@ -597,8 +627,8 @@ def main():
         all_records.extend(records)
         log.info(f"  → {len(records)} benchmark record(s) produced")
 
-    # Save JSON
-    out_json = OUTPUT_DIR / "cases.json"
+    # Merge with existing and save
+    all_records = existing_records + all_records
     out_json.write_text(json.dumps(all_records, indent=2, ensure_ascii=False), encoding="utf-8")
 
     # Save flat CSV

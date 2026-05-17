@@ -9,7 +9,13 @@ This project builds a benchmark dataset for detecting misinformation in SEC-enfo
 ```bash
 conda create -n audit python=3.11 -y
 conda activate audit
-pip install requests beautifulsoup4 pdfplumber anthropic
+pip install requests beautifulsoup4 pdfplumber pypdf openai python-dotenv anthropic
+```
+
+Create a `.env` file in the project root with your API keys:
+```
+DEEPSEEK_API_KEY=...
+ANTHROPIC_API_KEY=...   # only needed for enrich_aaers.py
 ```
 
 ---
@@ -104,19 +110,19 @@ Rewrite of the v1 keyword classifier. Five changes:
 1. **Structure-aware parsing** — detects Roman-numeral sections (I./II./III./...) and locates the SUMMARY / FINDINGS / FACTS subblock so classification runs on the narrative core, not header/citation noise.
 2. **Document-type gate** — reinstatements, dismissals, withdrawals, appellate reviews, and lifted suspensions are classified as `NON_ENFORCEMENT` and excluded from fraud categories.
 3. **Legal-signal extraction** — Rule 102(e), Section 10A, PCAOB AS, ASC 606/605/350/360/842/450, SAB 99/101/104, Section 13(a), Item 303, Rule 10b-5, Section 17(a) captured as structured boolean fields.
-4. **LLM classification** — Gemini 2.5 Flash classifies the SUMMARY block and returns JSON: `primary_category`, `secondary_categories`, `respondent_type` (issuer / auditor / individual / mixed), `filing_entity`, `fiscal_periods_affected`, `dollar_impact`, `specific_mechanism`, `traceable_to_financials`, `reasoning`, `confidence`.
+4. **LLM classification** — DeepSeek (`deepseek-chat`) classifies the SUMMARY block and returns JSON: `primary_category`, `secondary_categories`, `respondent_type` (issuer / auditor / individual / mixed), `filing_entity`, `fiscal_periods_affected`, `dollar_impact`, `specific_mechanism`, `traceable_to_financials`, `reasoning`, `confidence`.
 5. **HTML-content detection** — some AAER "PDFs" were served as HTML by SEC; those are flagged and skipped.
 
 **Setup:**
 ```bash
-pip install pdfplumber pypdf google-generativeai
-export GEMINI_API_KEY=...
+pip install pdfplumber pypdf openai python-dotenv
+# Add DEEPSEEK_API_KEY to .env
 ```
 
 **Run:**
 ```bash
 python filter_aaers_v2.py                # full run, 6 parallel LLM workers
-python filter_aaers_v2.py --limit 50     # smoke test (optional)
+python filter_aaers_v2.py --sample 50    # smoke test (optional)
 ```
 
 **Output:**
@@ -144,14 +150,14 @@ Filters `aaer_dataset_v2.json` down to the highest-quality cases for model-testi
 - Non-empty `filing_entity`
 - Non-empty `specific_mechanism` (≥30 chars)
 - At least one entry in `fiscal_periods_affected`
-- `llm_confidence ≥ --conf` (default 0.8)
+- `llm_confidence ≥ --conf` (default 0.7)
 
 **Ranking key** (desc): `(llm_confidence, has_dollar_impact, n_periods, mechanism_length)`.
 
 **Run:**
 ```bash
-python select_top_cases.py                          # top 20, conf≥0.8
-python select_top_cases.py --top-n 50 --conf 0.7    # looser
+python select_top_cases.py                          # top 1000, conf≥0.7
+python select_top_cases.py --top-n 50 --conf 0.8   # stricter
 python select_top_cases.py --include-narrative      # add NARRATIVE_DISTORTION
 ```
 
@@ -260,8 +266,8 @@ python select_top_cases.py --top-n 50 --conf 0.75 --include-narrative
 For each selected case, finds and downloads the original filing (10-K or 10-Q) and its restatement amendment (10-K/A or 10-Q/A) from EDGAR.
 
 **What it does:**
-1. Searches EDGAR full-text search (EFTS) by company name to resolve CIK
-2. Queries the EDGAR submissions API for all filings
+1. Resolves CIK via browse-edgar company name search
+2. Queries the EDGAR submissions API for all filings (including paginated older filings)
 3. Matches filings by form type and fiscal period (e.g. FY2018 → 10-K with `reportDate` ending in 2018)
 4. Downloads the primary document for each matched filing
 5. Saves a `meta.json` sidecar per case with CIK, accession numbers, and local paths
@@ -280,8 +286,9 @@ edgar_filings/
 ```bash
 conda activate audit
 python fetch_filings.py --dry-run             # verify CIK resolution, no download
-python fetch_filings.py                       # download all cases
-python fetch_filings.py --aaer-num 4247      # single case
+python fetch_filings.py --limit 100           # first 100 cases
+python fetch_filings.py --resume              # skip already-fetched cases
+python fetch_filings.py --aaer-num 4247       # single case
 ```
 
 ---
@@ -291,7 +298,7 @@ python fetch_filings.py --aaer-num 4247      # single case
 Assembles the final benchmark dataset from EDGAR filings. Uses two complementary approaches to avoid fragile text parsing:
 
 - **Financial figures** → [EDGAR XBRL company facts API](https://data.sec.gov/api/xbrl/companyfacts/) provides exact revenue, AR, and net income values for both the original and restated filing, identified by accession number
-- **Text passages** → Claude Sonnet extracts the misleading MD&A paragraph, explains why it's misleading, and cites the ground-truth disclosure from the restatement note
+- **Text passages** → DeepSeek (`deepseek-chat`) extracts the misleading MD&A paragraph, explains why it's misleading, and cites the ground-truth disclosure from the restatement note
 
 **Output per record** (`benchmark_data/cases.json`):
 
@@ -301,12 +308,15 @@ Assembles the final benchmark dataset from EDGAR filings. Uses two complementary
 | `task2_narrative` | Misleading passage + location | Why misleading + correcting quote from restatement |
 | `task3_pattern` | Fraud mechanism description | Category + accounting standard violated |
 
+Resumable: already-built cases are skipped on re-run. Use `--force` with `--aaer-num` to re-process a single case.
+
 ```bash
 conda activate audit
-python build_benchmark.py                        # all cases
-python build_benchmark.py --aaer-num 4247       # single case
-python build_benchmark.py --skip-passages       # XBRL only, no Claude call
-python build_benchmark.py --skip-xbrl          # Claude only (if no XBRL data)
+python build_benchmark.py                          # full run; skips already-built cases
+python build_benchmark.py --aaer-num 4247          # single case (skipped if already built)
+python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
+python build_benchmark.py --skip-passages          # XBRL only, no DeepSeek call
+python build_benchmark.py --skip-xbrl             # DeepSeek only (if no XBRL data)
 ```
 
 **Output:**
@@ -371,7 +381,7 @@ python check_pdfs.py --delete  # remove bad PDFs
 # 5. Run v1 classifier (keyword-based, fast)
 python filter_aaers.py
 
-# 6. Run v2 classifier (LLM-based, requires GEMINI_API_KEY)
+# 6. Run v2 classifier (LLM-based, requires DEEPSEEK_API_KEY)
 python filter_aaers_v2.py
 
 # 7. Select top-N cases for downstream model input
@@ -387,15 +397,17 @@ python enrich_aaers.py --max-cases 10    # trial run
 python enrich_aaers.py --resume          # safe restart after interruption
 
 # 7. Select high-confidence, EDGAR-traceable cases
-python select_top_cases.py --top-n 30
+python select_top_cases.py               # top 1000, conf >= 0.7
 
 # 8. Find and download matching EDGAR filings (10-K + 10-K/A, etc.)
-python fetch_filings.py --dry-run        # verify CIK resolution without downloading
-python fetch_filings.py                  # download originals + restatements
+python fetch_filings.py --limit 100 --dry-run   # verify CIK resolution without downloading
+python fetch_filings.py --limit 100             # download first 100
+python fetch_filings.py --resume                # resume; skip already-fetched
 
-# 9. Assemble benchmark records
-python build_benchmark.py                # full run
-python build_benchmark.py --aaer-num 4247  # single case (e.g. Pareteum)
+# 9. Assemble benchmark records (resumable)
+python build_benchmark.py                          # full run; skips already-built cases
+python build_benchmark.py --aaer-num 4247          # single case (e.g. Pareteum)
+python build_benchmark.py --aaer-num 4247 --force  # re-run a single case
 ```
 
 ---

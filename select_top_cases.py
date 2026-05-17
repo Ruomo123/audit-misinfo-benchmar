@@ -87,8 +87,8 @@ def score(r: dict) -> tuple:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--top-n", type=int, default=20)
-    ap.add_argument("--conf", type=float, default=0.8)
+    ap.add_argument("--top-n", type=int, default=1000)
+    ap.add_argument("--conf", type=float, default=0.2)
     ap.add_argument("--include-narrative", action="store_true",
                     help="Include NARRATIVE_DISTORTION cases (pure disclosure cases)")
     args = ap.parse_args()

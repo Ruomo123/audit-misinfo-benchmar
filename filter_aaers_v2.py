@@ -48,19 +48,20 @@ except ImportError:
 if pdfplumber is None and pypdf is None:
     raise ImportError("Install at least one PDF library: pip install pdfplumber pypdf")
 
-try:
-    import google.generativeai as genai
-except ImportError:
-    genai = None
+from dotenv import load_dotenv
+load_dotenv()
+
+from openai import OpenAI
 
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-AAER_DIR   = Path("aaer_data")
-OUTPUT_DIR = Path("aaer_filtered_v2")
-V1_DIR     = Path("aaer_filtered")  # for comparison
-MIN_CHARS  = 200
-LLM_MODEL  = "gemini-2.5-flash"
-LLM_WORKERS = 6  # parallel Gemini calls
+AAER_DIR       = Path("aaer_data")
+OUTPUT_DIR     = Path("aaer_filtered_v2")
+V1_DIR         = Path("aaer_filtered")  # for comparison
+MIN_CHARS      = 200
+DEEPSEEK_MODEL = "deepseek-chat"
+DEEPSEEK_BASE  = "https://api.deepseek.com"
+LLM_WORKERS    = 6
 # ──────────────────────────────────────────────────────────────────────────────
 
 logging.basicConfig(
@@ -420,38 +421,35 @@ Document SUMMARY/FINDINGS section:
 Return valid JSON only, matching the provided schema."""
 
 
-class GeminiClassifier:
-    def __init__(self, api_key: str, model: str = LLM_MODEL):
-        if genai is None:
-            raise ImportError("Install google-generativeai: pip install google-generativeai")
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel(
-            model,
-            generation_config={
-                "response_mime_type": "application/json",
-                "response_schema": LLM_SCHEMA,
-                "temperature": 0.0,
-            },
-        )
+class DeepSeekClassifier:
+    def __init__(self, api_key: str):
+        self.client = OpenAI(api_key=api_key, base_url=DEEPSEEK_BASE)
 
-    def classify(self, context: str, retries: int = 3) -> dict | None:
+    def classify(self, context: str, retries: int = 3) -> "dict | None":
         prompt = LLM_PROMPT_TEMPLATE.format(context=context[:6000])
         last_err = None
         for attempt in range(retries):
             try:
-                resp = self.model.generate_content(prompt)
-                return json.loads(resp.text)
+                resp = self.client.chat.completions.create(
+                    model=DEEPSEEK_MODEL,
+                    seed=42,
+                    temperature=0,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                raw = resp.choices[0].message.content.strip()
+                raw = re.sub(r"^```json\s*|\s*```$", "", raw, flags=re.DOTALL)
+                return json.loads(raw)
             except Exception as e:
                 last_err = e
                 wait = 2 ** attempt
-                log.debug(f"Gemini retry {attempt+1} after {wait}s: {e}")
+                log.debug(f"DeepSeek retry {attempt+1} after {wait}s: {e}")
                 time.sleep(wait)
-        log.warning(f"Gemini classification failed after {retries} tries: {last_err}")
+        log.warning(f"DeepSeek classification failed after {retries} tries: {last_err}")
         return None
 
 
 # ── Per-PDF pipeline ─────────────────────────────────────────────────────────
-def process_one(pdf_path: Path, meta: dict, classifier: GeminiClassifier | None) -> dict:
+def process_one(pdf_path: Path, meta: dict, classifier: "DeepSeekClassifier | None") -> dict:
     text, backend = extract_text(pdf_path)
     record = {
         **meta,
@@ -641,12 +639,12 @@ def main():
 
     classifier = None
     if not args.no_llm:
-        api_key = os.getenv("GEMINI_API_KEY")
+        api_key = os.getenv("DEEPSEEK_API_KEY")
         if not api_key:
-            log.warning("GEMINI_API_KEY not set, falling back to lexicon only")
+            log.warning("DEEPSEEK_API_KEY not set, falling back to lexicon only")
         else:
-            classifier = GeminiClassifier(api_key)
-            log.info(f"LLM classifier ready: {LLM_MODEL}")
+            classifier = DeepSeekClassifier(api_key)
+            log.info(f"LLM classifier ready: {DEEPSEEK_MODEL}")
 
     results = []
     # Run PDF extraction + rule-based sequentially; LLM calls parallelized inside
