@@ -27,6 +27,10 @@ __pycache__/
 *.pyo
 .env
 
+# Local-only benchmark files
+benchmark_data/review_guide.txt
+edgar_filings/
+
 # Temp/test files
 peek_pdf.py
 test_download.py
