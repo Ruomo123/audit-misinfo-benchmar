@@ -321,13 +321,23 @@ python build_benchmark.py --aaer-num 4247          # single case (skipped if alr
 python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
 python build_benchmark.py --skip-passages          # XBRL only, no DeepSeek call
 python build_benchmark.py --skip-xbrl             # DeepSeek only (if no XBRL data)
-python build_benchmark.py --patch-task1            # re-extract task1 attribution only for records with empty management_attribution
+python build_benchmark.py --patch-task1            # re-extract task1 attribution for empty/placeholder records
+python build_benchmark.py --patch-task2            # re-extract task2 passage/ground_truth where restatement is available
 ```
 
-**Current dataset stats (84 AAERs, 295 records as of May 2026):**
-- Task 1: 55% have good `management_attribution`; 9% missing XBRL financials
-- Task 2: 43% have real ground truth source; 57% original-only (no restatement available — expected)
+**Pre-review auto-correction workflow** (run in order before sending to reviewers):
+```bash
+python preclear_attribution.py          # clear attributions mistakenly pulled from restated filing
+python build_benchmark.py --patch-task1 # re-extract task1 for all placeholder/empty attributions
+python build_benchmark.py --patch-task2 # re-extract task2 for fixable placeholder passages
+python add_quality_flags.py             # add quality_flags to cases.json + write benchmark_data/review_flags.csv
+```
+
+**Current dataset stats (84 AAERs, 295 records as of May 2026, post auto-correction):**
+- Task 1: 89% have good `management_attribution` (up from 55%); 46% missing XBRL (pre-XBRL era filings, unfixable)
+- Task 2: 57% original-only (no restatement, expected); 1% still placeholder after patching
 - Task 3: 100% populated
+- `quality_flags` field on every record; `benchmark_data/review_flags.csv` for reviewer triage (9 HIGH, 154 MEDIUM, 132 LOW priority)
 
 **Output:**
 ```

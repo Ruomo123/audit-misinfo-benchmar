@@ -66,6 +66,13 @@ python build_benchmark.py --aaer-num 4247 --force  # force re-run of one case
 python build_benchmark.py --skip-xbrl             # skip XBRL lookup
 python build_benchmark.py --skip-passages         # assemble skeleton records only (no DeepSeek)
 python build_benchmark.py --patch-task1            # re-extract task1 attribution only for records with empty management_attribution
+python build_benchmark.py --patch-task2            # re-extract task2 passage/ground_truth for records with placeholder passage but restatement on disk
+
+# Pre-review auto-correction workflow (run in order)
+python preclear_attribution.py                     # clear task1 attributions pulled from restated filing (run before --patch-task1)
+python build_benchmark.py --patch-task1            # re-extract task1 for all placeholder/empty attributions
+python build_benchmark.py --patch-task2            # re-extract task2 for fixable placeholder passages
+python add_quality_flags.py                        # add quality_flags to cases.json + generate benchmark_data/review_flags.csv
 ```
 
 ## Recommended Workflow
@@ -126,7 +133,12 @@ SEC Website → download_litrel.py → litrel_data/
 - Resumable: skips cases already in `benchmark_data/cases.json`; use `--force` with `--aaer-num` to re-run a case
 - Original-only cases (no 10-K/A on EDGAR) produce records with `task2_narrative` empty
 - Output schema: each record has a top-level `tasks` key with `task1_profit_source`, `task2_narrative`, `task3_pattern`; ground truth is under `label` (not `output`)
-- `--patch-task1`: re-runs only task 1 extraction for records with empty `management_attribution` — does not re-run task 2/3
+- `--patch-task1`: re-runs only task 1 extraction for records with empty or placeholder `management_attribution`; detects generic fallback text, not just empty strings
+- `--patch-task2`: re-runs only task 2 extraction for records with placeholder passage where a restated file exists on disk (skips original-only cases)
+
+**`preclear_attribution.py`** — one-shot script that clears `management_attribution` entries that were mistakenly pulled from the restated filing (contain "restatement"/"restated"). Run before `--patch-task1`.
+
+**`add_quality_flags.py`** — adds a `quality_flags: [...]` list to every record in `cases.json` and writes `benchmark_data/review_flags.csv` (gitignored). No API calls. Flags: `task1_no_xbrl`, `task1_attribution_placeholder`, `task1_attribution_from_restatement`, `task2_no_restatement`, `task2_passage_placeholder`, `task2_source_is_exhibit`.
 
 **`check_pdfs.py`** should be run before filtering: flags corrupt files and those with <100 chars of extractable text, writes results to `aaer_data/bad_pdfs.json`.
 

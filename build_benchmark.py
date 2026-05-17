@@ -657,8 +657,10 @@ def patch_task1(args, client: OpenAI) -> None:
 
         t1 = (rec.get("tasks") or {}).get("task1_profit_source") or {}
         attr = (t1.get("input") or {}).get("management_attribution", "")
-        if attr.strip() and not args.force:
-            continue  # already has attribution, skip unless --force
+        attr_low = attr.lower()
+        is_placeholder = (not attr.strip()) or any(p in attr_low for p in _TASK1_PLACEHOLDER_PATTERNS)
+        if not is_placeholder and not args.force:
+            continue  # already has a real attribution
 
         period = rec.get("fiscal_period", "?")
         log.info(f"  Patching task1 for AAER-{aaer_num} {period}")
@@ -707,6 +709,175 @@ def patch_task1(args, client: OpenAI) -> None:
     log.info(f"Patched task1 for {patched} record(s). Saved to {out_json}")
 
 
+_TASK1_PLACEHOLDER_PATTERNS = (
+    "no explicit attribution",
+    "not provided",
+    "not available",
+    "management claimed",
+    "no specific attribution",
+    "original md&a section is not provided",
+    "original md&a section is truncated",
+    "original mda section is not provided",
+    "no explicit attribution found",
+)
+
+_TASK2_PLACEHOLDER_PATTERNS = (
+    "not provided", "not available", "truncated", "no misleading passage",
+    "fraud mechanism indicates", "original mda section is not provided",
+    "original md&a section is truncated",
+)
+
+TASK2_PROMPT = """\
+You are an expert in SEC financial disclosures and accounting fraud detection.
+
+Given the original MD&A section and the restatement correction note, extract:
+1. A verbatim quote (1-3 sentences) from the ORIGINAL MD&A that is misleading or
+   false given what the restatement reveals.
+2. A verbatim quote from the RESTATEMENT NOTE that directly corrects or contradicts
+   the misleading passage.
+
+Return ONLY valid JSON:
+{{
+  "misleading_passage": "<exact quote from original MD&A>",
+  "passage_location": "<section name, e.g. MD&A, Results of Operations>",
+  "ground_truth_source": "<exact corrective quote from restatement note>",
+  "ground_truth_location": "<section in restated filing>",
+  "misleading_type": "<misleading_framing | material_omission | false_statement>",
+  "explanation": "<1-2 sentences on why the original passage is misleading>"
+}}
+
+FRAUD MECHANISM FROM AAER:
+{mechanism}
+
+ORIGINAL FILING — MD&A SECTION:
+{original_mda}
+
+RESTATEMENT NOTE:
+{restatement_note}
+
+Return only valid JSON, no markdown fences.
+"""
+
+
+def extract_task2(
+    client: OpenAI,
+    mechanism: str,
+    original_mda: str,
+    restatement_note: str,
+) -> dict:
+    prompt = TASK2_PROMPT.format(
+        mechanism=mechanism[:1000],
+        original_mda=original_mda[:MAX_SECTION_CHARS],
+        restatement_note=restatement_note[:MAX_SECTION_CHARS],
+    )
+    try:
+        resp = client.chat.completions.create(
+            model=PASSAGE_MODEL,
+            temperature=0,
+            seed=42,
+            max_tokens=600,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = resp.choices[0].message.content.strip()
+        raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.DOTALL)
+        raw = re.sub(r"\s*```$", "", raw, flags=re.DOTALL)
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        log.warning(f"  JSON parse error from DeepSeek (task2): {e}")
+        return {}
+    except Exception as e:
+        log.warning(f"  DeepSeek API error (task2): {e}")
+        return {}
+
+
+def _is_task2_placeholder(passage: str) -> bool:
+    if not passage.strip():
+        return True
+    low = passage.lower()
+    return any(p in low for p in _TASK2_PLACEHOLDER_PATTERNS)
+
+
+def patch_task2(args, client: OpenAI) -> None:
+    """Re-run task2 extraction in-place for records with placeholder passage but a restated file on disk."""
+    out_json = OUTPUT_DIR / "cases.json"
+    if not out_json.exists():
+        log.error("No cases.json found — run full build first")
+        return
+
+    records = json.loads(out_json.read_text(encoding="utf-8"))
+    cases_by_aaer = {}
+    cases_data = json.loads(Path(args.cases).read_text(encoding="utf-8"))
+    for c in cases_data:
+        cases_by_aaer[c["aaer_num"]] = c
+
+    patched = 0
+    for rec in records:
+        aaer_num = rec["aaer_num"]
+        if args.aaer_num and aaer_num != args.aaer_num:
+            continue
+
+        t2 = (rec.get("tasks") or {}).get("task2_narrative") or {}
+        passage = (t2.get("input") or {}).get("passage", "")
+        if not _is_task2_placeholder(passage) and not args.force:
+            continue  # already has a real passage
+
+        # Only patch if a restated file is actually on disk
+        rest_path = (rec.get("documents") or {}).get("restated", {}).get("local_path", "")
+        if not rest_path or not Path(rest_path).exists():
+            continue  # original-only case — nothing to extract from
+
+        period = rec.get("fiscal_period", "?")
+        log.info(f"  Patching task2 for AAER-{aaer_num} {period}")
+
+        meta_path = FILINGS_DIR / str(aaer_num) / "meta.json"
+        if not meta_path.exists():
+            log.warning(f"    No meta.json — skipping")
+            continue
+        filing_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+        period_info = next(
+            (p for p in filing_meta.get("periods", []) if p.get("period") == period),
+            None,
+        )
+        if not period_info:
+            log.warning(f"    Period {period} not found in meta.json — skipping")
+            continue
+
+        orig_path = (period_info.get("original") or {}).get("local_path", "")
+        if not orig_path or not Path(orig_path).exists():
+            log.warning(f"    Original file missing — skipping")
+            continue
+
+        orig_text = extract_text_from_file(Path(orig_path))
+        rest_text = extract_text_from_file(Path(rest_path))
+        original_mda  = extract_section(orig_text, "7", ["7A", "8"])
+        restatement_note = find_restatement_note(rest_text) if rest_text else ""
+
+        if not original_mda:
+            log.warning(f"    Could not locate MD&A — skipping")
+            continue
+
+        case = cases_by_aaer.get(aaer_num, {})
+        result = extract_task2(client, case.get("specific_mechanism", ""), original_mda, restatement_note)
+        if not result:
+            log.warning(f"    Empty response — skipping")
+            continue
+
+        rec["tasks"]["task2_narrative"]["input"]["passage"]  = result.get("misleading_passage", "")
+        rec["tasks"]["task2_narrative"]["input"]["location"] = result.get("passage_location", "")
+        lbl = rec["tasks"]["task2_narrative"]["label"]
+        lbl["misleading_type"]       = result.get("misleading_type", lbl.get("misleading_type", ""))
+        lbl["explanation"]           = result.get("explanation", lbl.get("explanation", ""))
+        lbl["ground_truth_source"]   = result.get("ground_truth_source", "")
+        lbl["ground_truth_location"] = result.get("ground_truth_location", "")
+        patched += 1
+
+        # Save after each record for resumability
+        out_json.write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    log.info(f"Patched task2 for {patched} record(s). Saved to {out_json}")
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Build benchmark dataset from EDGAR filings")
     parser.add_argument("--cases", default=str(CASES_FILE))
@@ -720,6 +891,8 @@ def parse_args():
                         help="Skip DeepSeek extraction; assemble skeleton records only")
     parser.add_argument("--patch-task1", action="store_true",
                         help="Re-run task1 extraction in-place for records with empty management_attribution")
+    parser.add_argument("--patch-task2", action="store_true",
+                        help="Re-run task2 extraction in-place for records with placeholder passage but a restated file available")
     return parser.parse_args()
 
 
@@ -737,6 +910,10 @@ def main():
 
     if args.patch_task1:
         patch_task1(args, client)
+        return
+
+    if args.patch_task2:
+        patch_task2(args, client)
         return
 
     cases = json.loads(Path(args.cases).read_text(encoding="utf-8"))

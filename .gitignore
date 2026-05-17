@@ -29,6 +29,7 @@ __pycache__/
 
 # Local-only benchmark files
 benchmark_data/review_guide.txt
+benchmark_data/review_flags.csv
 edgar_filings/
 
 # Temp/test files
